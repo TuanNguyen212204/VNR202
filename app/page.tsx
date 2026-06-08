@@ -1,27 +1,31 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/sections/Hero";
-import { TinhHuong } from "@/components/sections/TinhHuong";
-import { VanHoa } from "@/components/sections/VanHoa";
-import { DaoDuc } from "@/components/sections/DaoDuc";
-import { ConNguoi } from "@/components/sections/ConNguoi";
-import { VanDung } from "@/components/sections/VanDung";
-import { QuotesSection } from "@/components/sections/QuotesSection";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { PresentationTimeline } from "@/components/PresentationTimeline";
+import { IntroSection } from "@/components/IntroSection";
+import { HumanThoughtSection } from "@/components/HumanThoughtSection";
+import { CultureSection } from "@/components/CultureSection";
+import { EthicsSection } from "@/components/EthicsSection";
+import { StudentPracticeSection } from "@/components/StudentPracticeSection";
+import { ConclusionSection } from "@/components/ConclusionSection";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <TinhHuong />
-        <VanHoa />
-        <DaoDuc />
-        <ConNguoi />
-        <VanDung />
-        <QuotesSection />
+      <ScrollProgress />
+      <AnimatedBackground />
+      <Header />
+      <main className="relative z-10">
+        <HeroSection />
+        <PresentationTimeline />
+        <IntroSection />
+        <HumanThoughtSection />
+        <CultureSection />
+        <EthicsSection />
+        <StudentPracticeSection />
+        <ConclusionSection />
       </main>
-      <Footer />
     </>
   );
 }
