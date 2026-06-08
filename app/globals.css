@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=Noto+Sans:wght@400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-purple: #534ab7;
+  --color-purple-light: #eeedfe;
+  --color-teal: #0f6e56;
+  --color-teal-light: #e1f5ee;
+  --color-coral: #993c1d;
+  --color-coral-light: #faece7;
+  --color-blue: #185fa5;
+  --color-blue-light: #e6f1fb;
+  --color-dark: #1a1a2e;
+  --color-bg: #fafaf9;
+  --color-text: #1e1e2e;
+  --color-text-muted: #5f5e5a;
+  --color-border: #e5e3dc;
+  --color-quotes-bg: #f2efe8;
+
+  --font-sans: "Be Vietnam Pro", "Noto Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans leading-relaxed antialiased;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+  }
+
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+}
