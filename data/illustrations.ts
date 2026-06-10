@@ -38,6 +38,7 @@ export type IllustrationMeta = {
   variant: IllustrationVariant;
   icon: IllustrationIconName;
   section: IllustrationSection;
+  objectPosition?: string;
 };
 
 export const illustrations: Record<string, IllustrationMeta> = {
@@ -164,25 +165,27 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   practice: {
     id: "practice",
-    imageSrc: "/illustrations/student-practice.png",
-    title: "Sinh viên thực hành",
-    description: "Học tập, giúp đỡ bạn bè và sống có trách nhiệm.",
+    imageSrc: "/images/hcm-portrait-1946b.jpg",
+    title: "Chủ tịch Hồ Chí Minh",
+    description: "Chân dung Chủ tịch Hồ Chí Minh — người thầy vĩ đại của dân tộc Việt Nam.",
     prompt:
       "Vietnamese university students studying in a bright library, helping each other, using laptop and smartphone responsibly, warm academic atmosphere, clean modern illustration, gold and cream tones, no text.",
     variant: "practice",
     icon: "BookOpen",
     section: "practice",
+    objectPosition: "top center",
   },
   conclusion: {
     id: "conclusion",
-    imageSrc: "/illustrations/conclusion-lotus-vietnam.png",
-    title: "Tương lai dân tộc",
-    description: "Hoa sen nở, bình minh và ánh sáng hy vọng.",
+    imageSrc: "/images/hcm-portrait-1946.jpg",
+    title: "Chủ tịch Hồ Chí Minh",
+    description: "Chân dung chính thức Chủ tịch Hồ Chí Minh năm 1946 — biểu tượng của độc lập, tự do và hạnh phúc.",
     prompt:
       "Hopeful Vietnamese conclusion illustration, sunrise light over subtle Vietnam map outline, blooming lotus, open book, golden particles, elegant burgundy and cream presentation design, inspiring and respectful, no text, no watermark.",
     variant: "conclusion",
     icon: "Sparkles",
     section: "conclusion",
+    objectPosition: "top center",
   },
 };
 

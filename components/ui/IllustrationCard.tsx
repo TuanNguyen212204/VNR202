@@ -25,6 +25,7 @@ type IllustrationCardProps = {
   showCaption?: boolean;
   children?: ReactNode;
   skipImage?: boolean;
+  objectPosition?: string;
 };
 
 const sizeClasses: Record<IllustrationSize, string> = {
@@ -48,6 +49,7 @@ export function IllustrationCard({
   showCaption = true,
   children,
   skipImage = false,
+  objectPosition = "center",
 }: IllustrationCardProps) {
   const reduced = useReducedMotion();
   const [imageError, setImageError] = useState(false);
@@ -62,6 +64,7 @@ export function IllustrationCard({
       alt={title}
       fill
       className="object-cover"
+      style={{ objectPosition }}
       sizes="(max-width: 768px) 100vw, 50vw"
       placeholder="blur"
       blurDataURL={blurDataURL}
