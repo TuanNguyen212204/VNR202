@@ -120,6 +120,50 @@ export const illustrations: Record<string, IllustrationMeta> = {
     icon: "Globe2",
     section: "culture",
   },
+  "culture-holistic": {
+    id: "culture-holistic",
+    imageSrc: "/images/div1.jpg",
+    title: "Phát triển toàn diện",
+    description: "Con người phát triển đồng đều về trí tuệ, đạo đức, thể chất và tâm hồn.",
+    prompt:
+      "Vietnamese educational illustration of holistic human development, reading, creativity, physical wellness, golden light and lotus, burgundy gold cream palette, no text.",
+    variant: "culture",
+    icon: "Sprout",
+    section: "culture",
+  },
+  "culture-environment": {
+    id: "culture-environment",
+    imageSrc: "/images/le-hoi-den-hung-ruoc-kieu.jpg",
+    title: "Môi trường văn hóa lành mạnh",
+    description: "Cộng đồng sống hòa hợp, văn hóa trong đời sống hằng ngày.",
+    prompt:
+      "Peaceful healthy Vietnamese cultural environment, families, community, festival, lotus pond, burgundy gold palette, no text.",
+    variant: "culture",
+    icon: "Heart",
+    section: "culture",
+  },
+  "culture-political": {
+    id: "culture-political",
+    imageSrc: "/images/div3.jpg",
+    title: "Văn hóa chính trị và kinh tế",
+    description: "Văn hóa trong hoạt động quản lý nhà nước và phát triển kinh tế.",
+    prompt:
+      "Culture in politics and economy illustration, government and marketplace harmony, balanced scale, burgundy gold palette, no text.",
+    variant: "culture",
+    icon: "Scale",
+    section: "culture",
+  },
+  "culture-integration": {
+    id: "culture-integration",
+    imageSrc: "/images/div4.jpg",
+    title: "Hội nhập văn hóa quốc tế",
+    description: "Tiếp thu tinh hoa nhân loại, giữ gìn bản sắc dân tộc.",
+    prompt:
+      "International cultural integration, globe with Vietnam, diverse exchange, lotus and national identity, burgundy gold palette, no text.",
+    variant: "culture",
+    icon: "Globe2",
+    section: "culture",
+  },
   ethics: {
     id: "ethics",
     imageSrc: "/images/ethics-main.jpg",
@@ -211,4 +255,11 @@ export const ethicsIllustrationIds: Record<string, string> = {
   role: "ethics-role",
   content: "ethics-content",
   principles: "ethics-principles",
+};
+
+export const cultureIllustrationIds: Record<string, string> = {
+  holistic: "culture-holistic",
+  environment: "culture-environment",
+  political: "culture-political",
+  integration: "culture-integration",
 };

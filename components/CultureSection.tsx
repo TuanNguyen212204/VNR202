@@ -1,5 +1,6 @@
+import { Globe2, Heart, Scale, Sprout, type LucideIcon } from "lucide-react";
 import { cultureContent } from "@/lib/presentation-content";
-import { getIllustration } from "@/data/illustrations";
+import { cultureIllustrationIds, getIllustration } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { MotionCard } from "@/components/ui/MotionCard";
@@ -7,6 +8,13 @@ import { IllustrationCard } from "@/components/ui/IllustrationCard";
 import { CultureInfographic } from "@/components/CultureInfographic";
 
 const cultureIllustration = getIllustration("culture");
+
+const iconMap: Record<string, LucideIcon> = {
+  Sprout,
+  Heart,
+  Scale,
+  Globe2,
+};
 
 export function CultureSection() {
   return (
@@ -44,19 +52,45 @@ export function CultureSection() {
           </MotionSection>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {cultureContent.subBlocks.map((block, i) => (
-            <MotionCard key={block} delay={i * 0.08} className="!p-5">
-              <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/30 text-sm font-bold text-burgundy">
-                  {i + 1}
-                </span>
-                <p className="text-sm leading-relaxed text-brown/80 lg:text-base">
-                  {block}
-                </p>
-              </div>
-            </MotionCard>
-          ))}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {cultureContent.subBlocks.map((block, i) => {
+            const Icon = iconMap[block.icon];
+            const illustration = getIllustration(cultureIllustrationIds[block.id]);
+
+            return (
+              <MotionCard key={block.id} delay={i * 0.08} className="!p-0 overflow-hidden">
+                <IllustrationCard
+                  title={illustration.title}
+                  description={illustration.description}
+                  imageSrc={illustration.imageSrc}
+                  iconName={illustration.icon}
+                  variant={illustration.variant}
+                  size="sm"
+                  showCaption={false}
+                  delay={i * 0.06}
+                  className="!rounded-none !border-0 !shadow-none !bg-transparent"
+                />
+                <div className="flex items-start gap-3 p-5 pt-4">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/30 text-sm font-bold text-burgundy">
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <div className="flex items-start gap-2">
+                      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-burgundy" />
+                      <p className="text-sm font-semibold leading-snug text-brown lg:text-base">
+                        {block.title}
+                      </p>
+                    </div>
+                    {block.description && (
+                      <p className="text-xs leading-relaxed text-brown/70 lg:text-sm">
+                        {block.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </MotionCard>
+            );
+          })}
         </div>
       </div>
     </section>

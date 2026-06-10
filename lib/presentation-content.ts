@@ -135,10 +135,34 @@ export const cultureContent = {
     "Trong giai đoạn hiện nay, xây dựng văn hóa phải gắn với xây dựng con người Việt Nam phát triển toàn diện. Con người Việt Nam cần được phát triển về nhân cách, đạo đức, trí tuệ, năng lực sáng tạo, thể chất, tâm hồn, trách nhiệm xã hội, nghĩa vụ công dân và ý thức tuân thủ pháp luật.",
   ],
   subBlocks: [
-    "Xây dựng con người Việt Nam phát triển toàn diện",
-    "Xây dựng môi trường văn hóa lành mạnh",
-    "Xây dựng văn hóa trong chính trị và kinh tế",
-    "Hội nhập văn hóa quốc tế, tiếp thu tinh hoa nhân loại nhưng giữ gìn bản sắc dân tộc",
+    {
+      id: "holistic",
+      title: "Xây dựng con người Việt Nam phát triển toàn diện",
+      icon: "Sprout" as const,
+      description:
+        "Không chỉ học giỏi hay làm việc tốt, con người hiện nay còn cần có đạo đức, nhân cách, sức khỏe, trách nhiệm xã hội và ý thức công dân.",
+    },
+    {
+      id: "environment",
+      title: "Xây dựng môi trường văn hóa lành mạnh",
+      icon: "Heart" as const,
+      description:
+        "Trong gia đình, nhà trường, cơ quan và không gian mạng. Gia đình hướng tới no ấm, văn minh. Nhà trường giáo dục tri thức đi đôi với đạo đức. Xã hội đấu tranh với lối sống ích kỷ, vô cảm.",
+    },
+    {
+      id: "political",
+      title: "Xây dựng văn hóa trong chính trị và kinh tế",
+      icon: "Scale" as const,
+      description:
+        "Cán bộ, đảng viên, cơ quan nhà nước phải có văn hóa phục vụ nhân dân; doanh nghiệp kinh doanh có đạo đức, không chạy theo lợi nhuận bằng mọi giá.",
+    },
+    {
+      id: "integration",
+      title: "Hội nhập văn hóa quốc tế, giữ gìn bản sắc dân tộc",
+      icon: "Globe2" as const,
+      description:
+        "Chủ động tiếp thu tinh hoa văn hóa nhân loại nhưng vẫn giữ gìn bản sắc dân tộc, để văn hóa Việt Nam vừa hiện đại, vừa đậm đà truyền thống.",
+    },
   ],
   infographicBranches: [
     "Phát triển toàn diện",
