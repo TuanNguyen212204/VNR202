@@ -99,6 +99,7 @@ export function StudentPracticeSection() {
               imageSrc={practiceIllustration.imageSrc}
               iconName={practiceIllustration.icon}
               variant={practiceIllustration.variant}
+              objectFit={practiceIllustration.objectFit}
               objectPosition={practiceIllustration.objectPosition}
               size="lg"
               delay={0.1}

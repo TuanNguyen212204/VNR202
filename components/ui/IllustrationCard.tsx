@@ -26,6 +26,7 @@ type IllustrationCardProps = {
   children?: ReactNode;
   skipImage?: boolean;
   objectPosition?: string;
+  objectFit?: "cover" | "contain";
 };
 
 const sizeClasses: Record<IllustrationSize, string> = {
@@ -50,6 +51,7 @@ export function IllustrationCard({
   children,
   skipImage = false,
   objectPosition = "center",
+  objectFit = "cover",
 }: IllustrationCardProps) {
   const reduced = useReducedMotion();
   const [imageError, setImageError] = useState(false);
@@ -63,7 +65,7 @@ export function IllustrationCard({
       src={imageSrc}
       alt={title}
       fill
-      className="object-cover"
+      className={objectFit === "contain" ? "object-contain" : "object-cover"}
       style={{ objectPosition }}
       sizes="(max-width: 768px) 100vw, 50vw"
       placeholder="blur"

@@ -28,6 +28,7 @@ export function ConclusionSection() {
             imageSrc={conclusionIllustration.imageSrc}
             iconName={conclusionIllustration.icon}
             variant={conclusionIllustration.variant}
+            objectFit={conclusionIllustration.objectFit}
             objectPosition={conclusionIllustration.objectPosition}
             size="lg"
             delay={0.05}

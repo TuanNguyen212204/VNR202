@@ -39,6 +39,7 @@ export type IllustrationMeta = {
   icon: IllustrationIconName;
   section: IllustrationSection;
   objectPosition?: string;
+  objectFit?: "cover" | "contain";
 };
 
 export const illustrations: Record<string, IllustrationMeta> = {
@@ -173,7 +174,8 @@ export const illustrations: Record<string, IllustrationMeta> = {
     variant: "practice",
     icon: "BookOpen",
     section: "practice",
-    objectPosition: "top center",
+    objectFit: "contain",
+    objectPosition: "center",
   },
   conclusion: {
     id: "conclusion",
@@ -185,7 +187,8 @@ export const illustrations: Record<string, IllustrationMeta> = {
     variant: "conclusion",
     icon: "Sparkles",
     section: "conclusion",
-    objectPosition: "top center",
+    objectFit: "contain",
+    objectPosition: "center",
   },
 };
 
