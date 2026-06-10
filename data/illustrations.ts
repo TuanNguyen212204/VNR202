@@ -166,9 +166,9 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   practice: {
     id: "practice",
-    imageSrc: "/images/hcm-portrait-1946b.jpg",
-    title: "Chủ tịch Hồ Chí Minh",
-    description: "Chân dung Chủ tịch Hồ Chí Minh — người thầy vĩ đại của dân tộc Việt Nam.",
+    imageSrc: "/images/hcm-with-children-2.jpg",
+    title: "Bác Hồ với thiếu nhi",
+    description: "Bác Hồ dặn dò học sinh, thiếu nhi — thế hệ tương lai của đất nước.",
     prompt:
       "Vietnamese university students studying in a bright library, helping each other, using laptop and smartphone responsibly, warm academic atmosphere, clean modern illustration, gold and cream tones, no text.",
     variant: "practice",

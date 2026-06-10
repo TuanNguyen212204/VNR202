@@ -184,13 +184,12 @@ export const studentPracticeContent = {
   intro:
     "Đối với sinh viên hiện nay, học tập tư tưởng Hồ Chí Minh không chỉ là học lý thuyết, mà quan trọng hơn là biết vận dụng vào hành động hằng ngày.",
   detail:
-    "Sinh viên có thể bắt đầu từ những việc cụ thể như học tập nghiêm túc, sống trung thực, không gian lận trong thi cử, không đạo văn, tôn trọng thầy cô và bạn bè, sử dụng mạng xã hội có trách nhiệm, không lan truyền tin giả, biết giúp đỡ người khác, sống giản dị, tiết kiệm và có trách nhiệm với công việc được giao.",
+    "Sinh viên có thể bắt đầu từ những việc cụ thể như học tập nghiêm túc, sống trung thực, không gian lận trong thi cử, tôn trọng thầy cô và bạn bè, sử dụng mạng xã hội có trách nhiệm, không lan truyền tin giả, biết giúp đỡ người khác, sống giản dị, tiết kiệm và có trách nhiệm với công việc được giao.",
   closing:
     "Một sinh viên có văn hóa không chỉ là người có kiến thức, mà còn là người biết cư xử đúng mực, biết sống có trách nhiệm với bản thân, gia đình và xã hội.",
   checklist: [
     { text: "Học tập nghiêm túc", icon: "BookOpen" as const },
     { text: "Sống trung thực", icon: "ShieldCheck" as const },
-    { text: "Không gian lận, không đạo văn", icon: "FileCheck" as const },
     { text: "Sử dụng mạng xã hội có trách nhiệm", icon: "Smartphone" as const },
     { text: "Giúp đỡ bạn bè, tôn trọng tập thể", icon: "Users" as const },
     { text: "Có khát vọng cống hiến", icon: "Sparkles" as const },

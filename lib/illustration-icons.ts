@@ -1,6 +1,5 @@
 import {
   BookOpen,
-  FileCheck,
   Flame,
   Globe2,
   Heart,
@@ -33,7 +32,6 @@ export const illustrationIconMap: Record<IllustrationIconName, LucideIcon> = {
 export type ChecklistIconName =
   | "BookOpen"
   | "ShieldCheck"
-  | "FileCheck"
   | "Smartphone"
   | "Users"
   | "Sparkles";
@@ -41,7 +39,6 @@ export type ChecklistIconName =
 export const checklistIconMap: Record<ChecklistIconName, LucideIcon> = {
   BookOpen,
   ShieldCheck,
-  FileCheck,
   Smartphone,
   Users,
   Sparkles,
