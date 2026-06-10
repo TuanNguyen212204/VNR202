@@ -120,7 +120,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   ethics: {
     id: "ethics",
-    imageSrc: "/illustrations/revolutionary-ethics.png",
+    imageSrc: "/images/ethics-main.jpg",
     title: "Đạo đức cách mạng",
     description: "La bàn đạo đức, ngọn lửa lý tưởng và biểu tượng chính trực.",
     prompt:
@@ -131,7 +131,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-role": {
     id: "ethics-role",
-    imageSrc: "/illustrations/revolutionary-ethics.png",
+    imageSrc: "/images/ethics-role.jpg",
     title: "Vai trò đạo đức",
     description: "Ngọn lửa lý tưởng và trái tim phục vụ nhân dân.",
     prompt:
@@ -142,7 +142,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-content": {
     id: "ethics-content",
-    imageSrc: "/illustrations/revolutionary-ethics.png",
+    imageSrc: "/images/ethics-content.jpg",
     title: "Nội dung đạo đức",
     description: "Cần, kiệm, liêm, chính — nền tảng nhân cách.",
     prompt:
@@ -153,7 +153,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-principles": {
     id: "ethics-principles",
-    imageSrc: "/illustrations/revolutionary-ethics.png",
+    imageSrc: "/images/ethics-principles.jpg",
     title: "Nguyên tắc rèn luyện",
     description: "Con đường tu dưỡng dẫn tới ánh sáng.",
     prompt:
