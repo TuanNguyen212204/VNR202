@@ -14,6 +14,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
 import { CultureInfographic } from "@/components/CultureInfographic";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const cultureIllustration = getIllustration("culture");
 
@@ -25,7 +26,7 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export function CultureSection() {
-  const reduced = useReducedMotion();
+  const mounted = useIsMounted();
   return (
     <section id="han-che" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
@@ -65,15 +66,27 @@ export function CultureSection() {
           {cultureContent.subBlocks.map((block, i) => {
             const Icon = iconMap[block.icon];
             const illustration = getIllustration(cultureIllustrationIds[block.id]);
+            const Container = mounted ? motion.div : "div";
+            const NumberBadge = mounted ? motion.span : "span";
+
+            const containerProps = mounted
+              ? {
+                  initial: { opacity: 0, y: 30, scale: 0.95 },
+                  whileInView: { opacity: 1, y: 0, scale: 1 },
+                  viewport: { once: true, margin: "-60px" },
+                  transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as const },
+                  whileHover: { y: -6, scale: 1.01 },
+                }
+              : {};
+
+            const badgeProps = mounted
+              ? { whileHover: { rotate: 360 }, transition: { duration: 0.6 } }
+              : {};
 
             return (
-              <motion.div
+              <Container
                 key={block.id}
-                initial={{ opacity: 0, y: reduced ? 0 : 30, scale: reduced ? 1 : 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={reduced ? undefined : { y: -6, scale: 1.01 }}
+                {...containerProps}
                 className="group relative overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
                 {/* Hover glow */}
@@ -96,13 +109,12 @@ export function CultureSection() {
                   className="!rounded-none !border-0 !shadow-none !bg-transparent"
                 />
                 <div className="flex items-start gap-3 p-5 pt-4">
-                  <motion.span
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
+                  <NumberBadge
+                    {...badgeProps}
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber/30 to-crimson/20 text-sm font-bold text-amber shadow-[0_0_12px_rgba(245,197,24,0.3)]"
                   >
                     {i + 1}
-                  </motion.span>
+                  </NumberBadge>
                   <div className="min-w-0 flex-1 space-y-1.5">
                     <div className="flex items-start gap-2">
                       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-amber" strokeWidth={2} />
@@ -117,7 +129,7 @@ export function CultureSection() {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </Container>
             );
           })}
         </div>

@@ -9,6 +9,7 @@ import { checklistIconMap } from "@/lib/illustration-icons";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const practiceIllustration = getIllustration("practice");
 
@@ -21,38 +22,60 @@ function ChecklistItem({
   iconName: keyof typeof checklistIconMap;
   index: number;
 }) {
+  const mounted = useIsMounted();
   const ref = useRef<HTMLLIElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
   const Icon = checklistIconMap[iconName];
 
+  const ItemContainer = mounted ? motion.li : "li";
+  const IconOuter = mounted ? motion.span : "span";
+  const IconCheck = mounted ? motion.span : "span";
+
+  const itemProps = mounted
+    ? {
+        initial: { opacity: 0, x: -30 },
+        animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0 },
+        transition: { delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+        whileHover: { x: 4, scale: 1.01 },
+      }
+    : {};
+
+  const iconProps = mounted
+    ? {
+        initial: { scale: 0 },
+        animate: isInView ? { scale: 1 } : { scale: 0 },
+        transition: { delay: index * 0.1 + 0.15, type: "spring" as const, stiffness: 200 },
+      }
+    : {};
+
+  const checkProps = mounted
+    ? {
+        initial: { scale: 0, opacity: 0 },
+        animate: isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 },
+        transition: { delay: index * 0.1 + 0.35, type: "spring" as const, stiffness: 260 },
+      }
+    : {};
+
   return (
-    <motion.li
+    <ItemContainer
       ref={ref}
-      initial={{ opacity: 0, x: reduced ? 0 : -30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={reduced ? undefined : { x: 4, scale: 1.01 }}
+      {...itemProps}
       className="group flex items-center gap-4 rounded-xl border border-amber/20 bg-glass-dark px-5 py-4 backdrop-blur-md transition-colors hover:border-amber/40"
     >
-      <motion.span
-        initial={{ scale: 0 }}
-        animate={isInView ? { scale: 1 } : {}}
-        transition={{ delay: index * 0.1 + 0.15, type: "spring", stiffness: 200 }}
+      <IconOuter
+        {...iconProps}
         className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber/30 to-crimson/20 shadow-[0_0_16px_rgba(245,197,24,0.25)]"
       >
         <Icon className="h-5 w-5 text-amber" strokeWidth={2} />
-        <motion.span
-          initial={{ scale: 0, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ delay: index * 0.1 + 0.35, type: "spring", stiffness: 260 }}
+        <IconCheck
+          {...checkProps}
           className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-jade shadow-[0_0_8px_rgba(16,185,129,0.6)]"
         >
           <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
-        </motion.span>
-      </motion.span>
+        </IconCheck>
+      </IconOuter>
       <span className="flex-1 text-justify text-base font-semibold text-ivory lg:text-lg" style={{ lineHeight: 1.65 }}>{text}</span>
-    </motion.li>
+    </ItemContainer>
   );
 }
 

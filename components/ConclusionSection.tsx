@@ -7,15 +7,33 @@ import { getIllustration } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const conclusionIllustration = getIllustration("conclusion");
 
 export function ConclusionSection() {
-  const reduced = useReducedMotion();
+  const mounted = useIsMounted();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const PulseGlow = mounted ? motion.div : "div";
+  const TopButton = mounted ? motion.button : "button";
+
+  const pulseProps = mounted
+    ? {
+        animate: { scale: [1, 1.05, 1] },
+        transition: { duration: 3, repeat: Infinity },
+      }
+    : {};
+
+  const buttonProps = mounted
+    ? {
+        whileHover: { scale: 1.05 },
+        whileTap: { scale: 0.95 },
+      }
+    : {};
 
   return (
     <section id="ket-luan" className="relative z-10 px-6 py-20 lg:py-28">
@@ -57,9 +75,8 @@ export function ConclusionSection() {
 
         <MotionSection delay={0.2} className="mt-12 text-center">
           <div className="relative inline-block">
-            <motion.div
-              animate={reduced ? undefined : { scale: [1, 1.05, 1] }}
-              transition={{ duration: 3, repeat: Infinity }}
+            <PulseGlow
+              {...pulseProps}
               className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-amber/20 via-crimson/15 to-amber/20 blur-2xl"
               aria-hidden
             />
@@ -72,16 +89,15 @@ export function ConclusionSection() {
         </MotionSection>
 
         <MotionSection delay={0.3} className="mt-12 flex justify-center">
-          <motion.button
+          <TopButton
             type="button"
             onClick={scrollToTop}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            {...buttonProps}
             className="group/btn inline-flex items-center gap-2.5 rounded-full border-2 border-amber bg-[#161e35]/70 px-10 py-3.5 text-base font-bold text-amber backdrop-blur-md transition-all hover:bg-gradient-to-r hover:from-crimson hover:via-burgundy hover:to-crimson hover:text-white hover:shadow-[0_8px_32px_rgba(245,197,24,0.4)]"
           >
             <ArrowUp className="h-5 w-5 transition-transform group-hover/btn:-translate-y-0.5" />
             {conclusionContent.backToTop}
-          </motion.button>
+          </TopButton>
         </MotionSection>
 
         <footer className="mt-16 border-t border-amber/15 pt-8 text-center text-sm text-ivory/80 lg:text-base">

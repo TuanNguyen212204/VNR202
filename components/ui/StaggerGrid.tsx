@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
 import { staggerContainerVariants } from "@/components/ui/MotionSection";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 type StaggerGridProps = Omit<HTMLMotionProps<"div">, "variants" | "initial" | "whileInView" | "viewport"> & {
   children: ReactNode;
@@ -10,7 +11,16 @@ type StaggerGridProps = Omit<HTMLMotionProps<"div">, "variants" | "initial" | "w
 };
 
 export function StaggerGrid({ children, className = "", ...props }: StaggerGridProps) {
+  const mounted = useIsMounted();
   const reduced = useReducedMotion();
+
+  if (!mounted) {
+    return (
+      <div className={className} {...(props as React.HTMLAttributes<HTMLDivElement>)}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div

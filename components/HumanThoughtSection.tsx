@@ -12,6 +12,7 @@ import { humanThoughtCards } from "@/lib/presentation-content";
 import { getIllustration, humanIllustrationIds } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
@@ -21,7 +22,9 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export function HumanThoughtSection() {
+  const mounted = useIsMounted();
   const reduced = useReducedMotion();
+
   return (
     <section
       id="thanh-tuu"
@@ -39,14 +42,27 @@ export function HumanThoughtSection() {
             const Icon = iconMap[card.icon];
             const illustrationId = humanIllustrationIds[card.id];
             const illustration = getIllustration(illustrationId);
+            const Container = mounted ? motion.div : "div";
+            const IconContainer = mounted ? motion.div : "div";
+
+            const containerProps = mounted
+              ? {
+                  initial: { opacity: 0, y: 40, scale: 0.96 },
+                  whileInView: { opacity: 1, y: 0, scale: 1 },
+                  viewport: { once: true, margin: "-60px" },
+                  transition: { duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
+                  whileHover: { y: -8 },
+                }
+              : {};
+
+            const iconProps = mounted
+              ? { whileHover: { rotate: 12, scale: 1.1 } }
+              : {};
+
             return (
-              <motion.div
+              <Container
                 key={card.id}
-                initial={{ opacity: 0, y: reduced ? 0 : 40, scale: reduced ? 1 : 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={reduced ? undefined : { y: -8 }}
+                {...containerProps}
                 className="group relative overflow-hidden rounded-3xl border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
                 {/* Glow on hover */}
@@ -73,12 +89,12 @@ export function HumanThoughtSection() {
                 {/* Content */}
                 <div className="relative p-6 lg:p-8">
                   <div className="mb-4 flex items-center gap-3">
-                    <motion.div
-                      whileHover={{ rotate: 12, scale: 1.1 }}
+                    <IconContainer
+                      {...iconProps}
                       className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber/30 bg-gradient-to-br from-crimson/30 to-burgundy/20 shadow-[0_0_16px_rgba(245,197,24,0.15)]"
                     >
                       <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
-                    </motion.div>
+                    </IconContainer>
                     <h3 className="font-heading text-xl font-bold text-white lg:text-2xl">
                       {card.title}
                     </h3>
@@ -89,7 +105,7 @@ export function HumanThoughtSection() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </Container>
             );
           })}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode, type MouseEvent } from "react";
+import { useState, useEffect, type ReactNode, type MouseEvent } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
@@ -54,7 +54,11 @@ export function IllustrationCard({
   objectFit = "cover",
 }: IllustrationCardProps) {
   const reduced = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   const showImage = Boolean(imageSrc && !imageError && !skipImage && !children);
   const ResolvedIcon = icon ?? (iconName ? illustrationIconMap[iconName] : undefined);
 
@@ -100,23 +104,37 @@ export function IllustrationCard({
     />
   ) : null;
 
+  // SSR + first paint: render plain div (no animation, no transform).
+  // After mount: render motion.div with initial=hidden + 3D tilt.
+  if (!mounted) {
+    return (
+      <div className={`group relative overflow-hidden rounded-3xl border border-amber/20 bg-dark-card backdrop-blur-md ${sizeClasses[size]} ${className}`}>
+        <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2), rgba(16,185,129,0.2))",
+            filter: "blur(8px)",
+          }}
+        />
+        {inner}
+      </div>
+    );
+  }
+
   const card = (
     <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 32, scale: reduced ? 1 : 0.95 }}
+      initial={{ opacity: 0, y: 32, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX: reduced ? 0 : rotateX, rotateY: reduced ? 0 : rotateY, transformStyle: "preserve-3d" }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className={`group relative overflow-hidden rounded-3xl border border-amber/20 bg-dark-card backdrop-blur-md ${sizeClasses[size]} ${className}`}
     >
-      {/* Shine sweep */}
       <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 animate-shine-sweep bg-gradient-to-r from-transparent via-amber/10 to-transparent" />
       </div>
 
-      {/* Glow border on hover */}
       <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2), rgba(16,185,129,0.2))",
@@ -128,7 +146,7 @@ export function IllustrationCard({
     </motion.div>
   );
 
-  if (floating && !reduced) {
+  if (floating) {
     return (
       <motion.div
         animate={{ y: [0, -10, 0] }}

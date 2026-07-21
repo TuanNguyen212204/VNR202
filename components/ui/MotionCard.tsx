@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 type MotionCardProps = {
   children: ReactNode;
@@ -14,15 +15,23 @@ export function MotionCard({
   className = "",
   delay = 0,
 }: MotionCardProps) {
-  const reduced = useReducedMotion();
+  const mounted = useIsMounted();
+
+  if (!mounted) {
+    return (
+      <div className={`glass-card card-hover p-6 lg:p-8 ${className}`}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 28 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      whileHover={reduced ? undefined : { scale: 1.03 }}
+      whileHover={{ scale: 1.03 }}
       className={`glass-card card-hover p-6 lg:p-8 ${className}`}
     >
       {children}

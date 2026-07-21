@@ -8,6 +8,7 @@ import { getIllustration, ethicsIllustrationIds } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const iconMap: Record<string, LucideIcon> = {
   ShieldCheck,
@@ -18,7 +19,7 @@ const iconMap: Record<string, LucideIcon> = {
 const ethicsMain = getIllustration("ethics");
 
 export function EthicsSection() {
-  const reduced = useReducedMotion();
+  const mounted = useIsMounted();
   const [openId, setOpenId] = useState<string | null>("principle");
 
   return (
@@ -31,20 +32,33 @@ export function EthicsSection() {
         />
 
         <MotionSection>
-          <motion.blockquote
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="group relative mb-12 overflow-hidden rounded-2xl border border-amber/30 bg-gradient-to-r from-crimson/15 via-burgundy/20 to-amber/15 px-8 py-8 text-center lg:py-10"
-            style={{ boxShadow: "0 0 40px rgba(245,197,24,0.15), inset 0 0 20px rgba(245,197,24,0.05)" }}
-          >
-            <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
-            <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
-            <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
-              {ethicsContent.quote}
-            </p>
-          </motion.blockquote>
+          {mounted ? (
+            <motion.blockquote
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group relative mb-12 overflow-hidden rounded-2xl border border-amber/30 bg-gradient-to-r from-crimson/15 via-burgundy/20 to-amber/15 px-8 py-8 text-center lg:py-10"
+              style={{ boxShadow: "0 0 40px rgba(245,197,24,0.15), inset 0 0 20px rgba(245,197,24,0.05)" }}
+            >
+              <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
+              <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
+              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
+                {ethicsContent.quote}
+              </p>
+            </motion.blockquote>
+          ) : (
+            <blockquote
+              className="group relative mb-12 overflow-hidden rounded-2xl border border-amber/30 bg-gradient-to-r from-crimson/15 via-burgundy/20 to-amber/15 px-8 py-8 text-center lg:py-10"
+              style={{ boxShadow: "0 0 40px rgba(245,197,24,0.15), inset 0 0 20px rgba(245,197,24,0.05)" }}
+            >
+              <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
+              <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
+              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
+                {ethicsContent.quote}
+              </p>
+            </blockquote>
+          )}
         </MotionSection>
 
         <div className="mb-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
@@ -137,14 +151,27 @@ export function EthicsSection() {
             const Icon = iconMap[part.icon];
             const illustrationId = ethicsIllustrationIds[part.id];
             const illustration = getIllustration(illustrationId);
+            const Container = mounted ? motion.div : "div";
+            const IconContainer = mounted ? motion.div : "div";
+
+            const containerProps = mounted
+              ? {
+                  initial: { opacity: 0, y: 40, scale: 0.96 },
+                  whileInView: { opacity: 1, y: 0, scale: 1 },
+                  viewport: { once: true, margin: "-60px" },
+                  transition: { duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] as const },
+                  whileHover: { y: -8, scale: 1.02 },
+                }
+              : {};
+
+            const iconProps = mounted
+              ? { whileHover: { rotate: 12, scale: 1.1 } }
+              : {};
+
             return (
-              <motion.div
+              <Container
                 key={part.id}
-                initial={{ opacity: 0, y: reduced ? 0 : 40, scale: reduced ? 1 : 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={reduced ? undefined : { y: -8, scale: 1.02 }}
+                {...containerProps}
                 className="group relative h-full overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
                 <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -166,12 +193,12 @@ export function EthicsSection() {
                   delay={i * 0.08}
                 />
                 <div className="p-6">
-                  <motion.div
-                    whileHover={{ rotate: 12, scale: 1.1 }}
+                  <IconContainer
+                    {...iconProps}
                     className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-amber/30 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0_16px_rgba(245,197,24,0.15)]"
                   >
                     <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
-                  </motion.div>
+                  </IconContainer>
                   <h3 className="mb-3 font-heading text-xl font-bold text-white lg:text-2xl">
                     {part.title}
                   </h3>
@@ -191,7 +218,7 @@ export function EthicsSection() {
                     </ul>
                   )}
                 </div>
-              </motion.div>
+              </Container>
             );
           })}
         </div>

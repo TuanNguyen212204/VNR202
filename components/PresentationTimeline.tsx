@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { timelineContent } from "@/lib/presentation-content";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 function scrollToSection(href: string) {
   document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
@@ -11,6 +12,7 @@ function scrollToSection(href: string) {
 
 export function PresentationTimeline() {
   const reduced = useReducedMotion();
+  const mounted = useIsMounted();
 
   return (
     <section id="muc-luc" className="relative z-10 px-6 py-20 lg:py-28">
@@ -24,33 +26,66 @@ export function PresentationTimeline() {
 
         <div className="relative">
           {/* Central glowing line */}
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute top-0 bottom-0 left-[1.15rem] origin-top lg:left-1/2 lg:-translate-x-px"
-          >
-            <div className="h-full w-0.5 bg-gradient-to-b from-transparent via-amber/40 to-transparent" />
+          {mounted && (
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute top-0 bottom-0 left-[1.15rem] origin-top lg:left-1/2 lg:-translate-x-px"
+            >
+              <div className="h-full w-0.5 bg-gradient-to-b from-transparent via-amber/40 to-transparent" />
+              <div
+                className="absolute inset-0 w-1 -translate-x-[2px] blur-md"
+                style={{
+                  background: "linear-gradient(180deg, transparent, rgba(245,197,24,0.4), transparent)",
+                }}
+              />
+            </motion.div>
+          )}
+          {!mounted && (
             <div
-              className="absolute inset-0 w-1 -translate-x-[2px] blur-md"
+              className="absolute top-0 bottom-0 left-[1.15rem] w-0.5 origin-top lg:left-1/2 lg:-translate-x-px"
               style={{
                 background: "linear-gradient(180deg, transparent, rgba(245,197,24,0.4), transparent)",
               }}
             />
-          </motion.div>
+          )}
 
           <div className="space-y-10">
             {timelineContent.items.map((item, index) => {
               const isEven = index % 2 === 0;
+              const Container = mounted ? motion.div : "div";
+              const ButtonContainer = mounted ? motion.button : "button";
+              const Pulse = mounted ? motion.div : "div";
+
+              const containerProps = mounted
+                ? {
+                    initial: { opacity: 0, y: 40 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true, margin: "-40px" },
+                    transition: { duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] as const },
+                  }
+                : {};
+
+              const buttonProps = mounted
+                ? {
+                    whileHover: { y: -4, scale: 1.01 },
+                    transition: { type: "spring" as const, stiffness: 300, damping: 20 },
+                  }
+                : {};
+
+              const pulseProps = mounted
+                ? {
+                    animate: { scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] },
+                    transition: { duration: 2, repeat: Infinity, delay: index * 0.2 },
+                  }
+                : {};
 
               return (
-                <motion.div
+                <Container
                   key={item.id}
-                  initial={{ opacity: 0, y: reduced ? 0 : 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  {...containerProps}
                   className={`relative flex items-start gap-6 lg:gap-0 ${
                     isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                   }`}
@@ -58,9 +93,8 @@ export function PresentationTimeline() {
                   {/* Number node */}
                   <div className="relative z-10 flex w-9 shrink-0 justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
                     <div className="relative">
-                      <motion.div
-                        animate={reduced ? undefined : { scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                      <Pulse
+                        {...pulseProps}
                         className="absolute inset-0 rounded-full bg-amber/40"
                       />
                       <span className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-amber bg-gradient-to-br from-crimson to-burgundy text-sm font-bold text-amber shadow-[0_0_20px_rgba(245,197,24,0.4)]">
@@ -70,11 +104,10 @@ export function PresentationTimeline() {
                   </div>
 
                   {/* Card */}
-                  <motion.button
+                  <ButtonContainer
                     type="button"
                     onClick={() => scrollToSection(item.href)}
-                    whileHover={reduced ? undefined : { y: -4, scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    {...buttonProps}
                     className={`group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark p-6 text-left backdrop-blur-md transition-all hover:border-amber/50 hover:shadow-[0_8px_40px_-8px_rgba(245,197,24,0.3)] lg:w-[calc(50%-2.5rem)] ${
                       isEven ? "lg:mr-auto lg:pr-8" : "lg:ml-auto lg:pl-8"
                     }`}
@@ -117,10 +150,10 @@ export function PresentationTimeline() {
                         </ul>
                       )}
                     </div>
-                  </motion.button>
+                  </ButtonContainer>
 
                   <div className="hidden flex-1 lg:block" aria-hidden />
-                </motion.div>
+                </Container>
               );
             })}
           </div>

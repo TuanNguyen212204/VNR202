@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type HTMLMotionProps, type Transition, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 export type MotionVariant = "fade-up" | "slide-left" | "slide-right" | "scale-fade" | "fade";
 
@@ -29,7 +30,19 @@ export function MotionSection({
   spring = false,
   ...props
 }: MotionSectionProps) {
+  const mounted = useIsMounted();
   const reduced = useReducedMotion();
+
+  // SSR + first paint: render plain div (no animation, no transform).
+  // After mount: apply initial="hidden" so the component can animate in.
+  if (!mounted) {
+    return (
+      <div className={className} {...(props as React.HTMLAttributes<HTMLDivElement>)}>
+        {children}
+      </div>
+    );
+  }
+
   const effectiveVariant = reduced ? "fade" : variant;
   const offset = offsets[effectiveVariant];
 

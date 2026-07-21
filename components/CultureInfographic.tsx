@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { BookOpen, Building2, Globe2, Heart, type LucideIcon } from "lucide-react";
 import { useRef } from "react";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 const nodes = [
   { icon: BookOpen, lines: ["Kinh tế", "chưa bền vững"], delay: 0.3 },
@@ -31,25 +32,40 @@ function NodeCard({
   lines,
   className,
   delay,
-  reduced,
+  mounted,
 }: {
   icon: LucideIcon;
   lines: string[];
   className: string;
   delay: number;
-  reduced: boolean;
+  mounted: boolean;
 }) {
+  const Wrapper = mounted ? motion.div : "div";
+  const Inner = mounted ? motion.div : "div";
+
+  const wrapperProps = mounted
+    ? {
+        initial: { opacity: 0, scale: 0.4 },
+        whileInView: { opacity: 1, scale: 1 },
+        viewport: { once: true },
+        transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+      }
+    : {};
+
+  const innerProps = mounted
+    ? {
+        animate: { y: [0, -6, 0] },
+        transition: { duration: 3.6 + delay, repeat: Infinity, ease: "easeInOut" as const, delay: delay * 1.2 },
+      }
+    : {};
+
   return (
-    <motion.div
+    <Wrapper
+      {...wrapperProps}
       className={`${className} z-10`}
-      initial={{ opacity: 0, scale: 0.4 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
-      <motion.div
-        animate={reduced ? undefined : { y: [0, -6, 0] }}
-        transition={{ duration: 3.6 + delay, repeat: Infinity, ease: "easeInOut", delay: delay * 1.2 }}
+      <Inner
+        {...innerProps}
         className="group flex w-[96px] flex-col items-center gap-2 rounded-2xl border border-amber/40 bg-gradient-to-b from-[#161e35]/90 to-[#0a0e1a]/90 px-2 py-3 shadow-[0_4px_24px_rgba(245,197,24,0.2),0_1px_4px_rgba(0,0,0,0.4)] backdrop-blur-md"
       >
         <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-amber/20 to-crimson/15 ring-1 ring-amber/40 shadow-inner">
@@ -60,8 +76,8 @@ function NodeCard({
             <div key={l}>{l}</div>
           ))}
         </div>
-      </motion.div>
-    </motion.div>
+      </Inner>
+    </Wrapper>
   );
 }
 
@@ -79,6 +95,7 @@ function LotusSvg({ size = 36 }: { size?: number }) {
 }
 
 export function CultureInfographic() {
+  const mounted = useIsMounted();
   const reduced = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -103,6 +120,28 @@ export function CultureInfographic() {
     mouseY.set(0);
   }
 
+  const SceneWrapper = mounted ? motion.div : "div";
+  const Center = mounted ? motion.div : "div";
+  const Line = mounted ? motion.line : "line";
+
+  const sceneProps = mounted
+    ? {
+        style: { rotateX, rotateY, transformStyle: "preserve-3d" as const },
+        animate: { rotateY: [0, 14, 0, -14, 0], rotateX: [0, 6, 0, -6, 0] },
+        transition: { duration: 9, repeat: Infinity, ease: "easeInOut" as const, repeatType: "loop" as const },
+        whileHover: { scale: 1.03 },
+      }
+    : {};
+
+  const centerProps = mounted
+    ? {
+        initial: { scale: 0.5, opacity: 0 },
+        whileInView: { scale: 1, opacity: 1 },
+        viewport: { once: true },
+        transition: { duration: 0.7, ease: "easeOut" as const },
+      }
+    : {};
+
   return (
     <div
       ref={containerRef}
@@ -116,20 +155,9 @@ export function CultureInfographic() {
       onMouseLeave={reduced ? undefined : handleMouseLeave}
     >
       {/* 3D rotating wrapper */}
-      <motion.div
+      <SceneWrapper
         className="relative w-full h-full flex items-center justify-center"
-        style={{ rotateX: reduced ? 0 : rotateX, rotateY: reduced ? 0 : rotateY, transformStyle: "preserve-3d" }}
-        animate={reduced ? undefined : {
-          rotateY: [0, 14, 0, -14, 0],
-          rotateX: [0, 6, 0, -6, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-          repeatType: "loop",
-        }}
-        whileHover={{ scale: 1.03 }}
+        {...sceneProps}
       >
         {/* Decorative SVG layer */}
         <svg viewBox="0 0 340 340" className="absolute inset-0 h-full w-full" aria-hidden>
@@ -167,30 +195,34 @@ export function CultureInfographic() {
             );
           })}
 
-          {lineCoords.map(([x1, y1, x2, y2], i) => (
-            <motion.line
-              key={i}
-              x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke="#f5c518"
-              strokeWidth="1.5"
-              strokeDasharray="5 6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 0.6 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.15 + i * 0.12 }}
-            />
-          ))}
+          {lineCoords.map(([x1, y1, x2, y2], i) => {
+            const lineAnimProps = mounted
+              ? {
+                  initial: { opacity: 0 },
+                  whileInView: { opacity: 0.6 },
+                  viewport: { once: true },
+                  transition: { duration: 0.8, delay: 0.15 + i * 0.12 },
+                }
+              : {};
+            return (
+              <Line
+                key={i}
+                x1={x1} y1={y1} x2={x2} y2={y2}
+                stroke="#f5c518"
+                strokeWidth="1.5"
+                strokeDasharray="5 6"
+                {...lineAnimProps}
+              />
+            );
+          })}
         </svg>
 
         {/* HTML positioned nodes */}
         <div className="relative h-[340px] w-[340px]">
           {/* Center medallion */}
-          <motion.div
+          <Center
+            {...centerProps}
             className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
-            initial={{ scale: 0.5, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div
               className="flex h-[124px] w-[124px] flex-col items-center justify-center gap-1.5 rounded-full border-2 border-amber bg-gradient-to-br from-[#fbbf24] via-[#f5c518] to-[#7b1e2e]"
@@ -202,38 +234,38 @@ export function CultureInfographic() {
                 <div>& Nguyên nhân</div>
               </div>
             </div>
-          </motion.div>
+          </Center>
 
           <NodeCard
             icon={nodes[0].icon}
             lines={nodes[0].lines}
             className="absolute top-0 left-1/2 -translate-x-1/2"
             delay={nodes[0].delay}
-            reduced={!!reduced}
+            mounted={mounted}
           />
           <NodeCard
             icon={nodes[1].icon}
             lines={nodes[1].lines}
             className="absolute right-0 top-1/2 -translate-y-1/2"
             delay={nodes[1].delay}
-            reduced={!!reduced}
+            mounted={mounted}
           />
           <NodeCard
             icon={nodes[2].icon}
             lines={nodes[2].lines}
             className="absolute bottom-0 left-1/2 -translate-x-1/2"
             delay={nodes[2].delay}
-            reduced={!!reduced}
+            mounted={mounted}
           />
           <NodeCard
             icon={nodes[3].icon}
             lines={nodes[3].lines}
             className="absolute left-0 top-1/2 -translate-y-1/2"
             delay={nodes[3].delay}
-            reduced={!!reduced}
+            mounted={mounted}
           />
         </div>
-      </motion.div>
+      </SceneWrapper>
     </div>
   );
 }
