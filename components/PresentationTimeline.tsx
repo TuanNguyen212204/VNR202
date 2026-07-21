@@ -95,22 +95,22 @@ export function PresentationTimeline() {
                         <ArrowRight className="h-4 w-4 text-amber opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                       </div>
 
-                      <h3 className="font-heading text-lg font-bold text-cream lg:text-xl">
+                      <h3 className="font-heading text-xl font-bold text-white lg:text-2xl" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}>
                         {item.title}
                       </h3>
 
-                      <p className="mt-2 text-sm leading-relaxed text-cream/70 lg:text-base">
+                      <p className="mt-2.5 text-base leading-relaxed text-ivory lg:text-lg">
                         {item.description}
                       </p>
 
                       {item.subItems.length > 0 && (
-                        <ul className="mt-4 space-y-2 border-t border-amber/15 pt-3">
+                        <ul className="mt-4 space-y-2.5 border-t border-amber/15 pt-3">
                           {item.subItems.map((sub) => (
                             <li
                               key={sub}
-                              className="flex items-start gap-2 text-sm text-cream/75"
+                              className="flex items-start gap-2.5 text-base text-ivory"
                             >
-                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_6px_rgba(245,197,24,0.8)]" />
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_8px_rgba(245,197,24,0.9)]" />
                               {sub}
                             </li>
                           ))}

@@ -52,32 +52,43 @@ export function HeroSection() {
             ))}
           </MotionSection>
 
-          {/* Title with word reveal */}
+          {/* Title with word reveal - HIGH CONTRAST for TV presentation */}
           <MotionSection delay={0.1}>
-            <h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-              <span className="block text-gradient-aurora text-glow-gold">
+            <h1
+              className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+              style={{
+                wordSpacing: "0.15em",
+                letterSpacing: "0.005em",
+                textShadow: "0 2px 20px rgba(0, 0, 0, 0.6)",
+              }}
+            >
+              <span className="block">
                 {titleWords.map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      duration: 0.8,
+                      duration: 0.7,
                       delay: 0.2 + i * 0.08,
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     className="inline-block"
+                    style={{ marginRight: "0.4em" }}
                   >
-                    {word}{" "}
+                    {word}
                   </motion.span>
                 ))}
               </span>
             </h1>
           </MotionSection>
 
-          {/* Subtitle */}
+          {/* Subtitle - HIGH CONTRAST */}
           <MotionSection delay={0.4}>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-cream/75 lg:mx-0 lg:text-lg xl:text-xl">
+            <p
+              className="mx-auto mt-6 max-w-3xl text-lg font-medium leading-relaxed text-ivory lg:mx-0 lg:text-xl xl:text-2xl"
+              style={{ textShadow: "0 2px 12px rgba(0, 0, 0, 0.5)" }}
+            >
               {heroContent.subtitle}
             </p>
           </MotionSection>
@@ -90,7 +101,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6 + i * 0.1, type: "spring" }}
-                className="group/tag relative overflow-hidden rounded-full border border-amber/30 bg-gradient-to-r from-[#161e35]/60 to-[#0f1729]/60 px-5 py-2 text-sm font-semibold text-amber backdrop-blur-md transition-all hover:border-amber/60 hover:shadow-[0_0_20px_rgba(245,197,24,0.2)]"
+                className="group/tag relative overflow-hidden rounded-full border-2 border-amber/50 bg-gradient-to-r from-[#161e35]/85 to-[#0f1729]/85 px-5 py-2.5 text-base font-bold text-amber backdrop-blur-md transition-all hover:border-amber/70 hover:shadow-[0_0_20px_rgba(245,197,24,0.3)]"
               >
                 <span className="relative z-10">{badge}</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-amber/10 to-transparent opacity-0 transition-opacity duration-500 group-hover/tag:opacity-100" />
@@ -105,7 +116,7 @@ export function HeroSection() {
               onClick={scrollToIntro}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="group/cta relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-crimson via-burgundy to-crimson px-8 py-3.5 text-base font-semibold text-cream shadow-[0_8px_32px_rgba(185,28,44,0.4)] transition-all hover:shadow-[0_12px_48px_rgba(245,197,24,0.3)]"
+              className="group/cta relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-crimson via-burgundy to-crimson px-10 py-4 text-lg font-bold text-white shadow-[0_8px_32px_rgba(185,28,44,0.5)] transition-all hover:shadow-[0_12px_48px_rgba(245,197,24,0.4)]"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-amber via-crimson to-amber opacity-0 transition-opacity duration-500 group-hover/cta:opacity-100" />
               <span className="relative z-10">{heroContent.cta}</span>

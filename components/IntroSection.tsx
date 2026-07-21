@@ -31,8 +31,7 @@ export function IntroSection() {
                 }}
               />
 
-              {/* Content */}
-              <div className="relative space-y-5 text-base leading-relaxed text-cream/85 lg:text-lg">
+              <div className="relative space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
                 {introContent.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -44,9 +43,10 @@ export function IntroSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="relative mt-10 border-l-4 border-amber bg-gradient-to-r from-amber/10 to-transparent px-6 py-4 font-heading text-xl italic text-gradient-gold lg:text-2xl"
+                className="relative mt-10 border-l-4 border-amber bg-gradient-to-r from-amber/15 to-transparent px-6 py-5 font-heading text-2xl font-bold italic text-amber lg:text-3xl"
+                style={{ wordSpacing: "0.08em", textShadow: "0 2px 12px rgba(245,197,24,0.3)" }}
               >
-                <Quote className="absolute -left-3 -top-3 h-6 w-6 rounded-full bg-amber p-1 text-[#0a0e1a] shadow-[0_0_16px_rgba(245,197,24,0.6)]" />
+                <Quote className="absolute -left-3 -top-3 h-7 w-7 rounded-full bg-amber p-1.5 text-[#0a0e1a] shadow-[0_0_16px_rgba(245,197,24,0.8)]" />
                 {introContent.quote}
               </motion.blockquote>
             </div>

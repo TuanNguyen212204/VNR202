@@ -41,7 +41,7 @@ export function EthicsSection() {
           >
             <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
             <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
-            <p className="relative font-heading text-xl italic text-gradient-gold lg:text-2xl xl:text-3xl">
+            <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
               {ethicsContent.quote}
             </p>
           </motion.blockquote>
@@ -49,7 +49,7 @@ export function EthicsSection() {
 
         <div className="mb-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <MotionSection>
-            <p className="text-base leading-relaxed text-cream/85 lg:text-lg">
+            <p className="text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
               {ethicsContent.intro}
             </p>
           </MotionSection>
@@ -84,8 +84,8 @@ export function EthicsSection() {
                     onClick={() => setOpenId(isOpen ? null : part.id)}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="h-5 w-5 text-amber" />
-                      <span className="font-heading font-bold text-cream">
+                      <Icon className="h-6 w-6 text-amber" strokeWidth={2.5} />
+                      <span className="font-heading text-base font-bold text-white lg:text-lg">
                         {part.title}
                       </span>
                     </div>
@@ -110,13 +110,13 @@ export function EthicsSection() {
                         showCaption={false}
                         delay={0}
                       />
-                      <div className="text-sm leading-relaxed text-cream/75">
+                      <div className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
                         {"content" in part && part.content}
                         {"items" in part && (
-                          <ul className="mt-2 space-y-2">
+                          <ul className="mt-2 space-y-2.5">
                             {part.items?.map((item) => (
-                              <li key={item} className="flex items-start gap-2">
-                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_6px_rgba(245,197,24,0.8)]" />
+                              <li key={item} className="flex items-start gap-2.5">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_8px_rgba(245,197,24,0.9)]" />
                                 {item}
                               </li>
                             ))}
@@ -172,19 +172,19 @@ export function EthicsSection() {
                   >
                     <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
                   </motion.div>
-                  <h3 className="mb-3 font-heading text-lg font-bold text-cream">
+                  <h3 className="mb-3 font-heading text-xl font-bold text-white lg:text-2xl">
                     {part.title}
                   </h3>
                   {"content" in part && (
-                    <p className="text-sm leading-relaxed text-cream/75">
+                    <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
                       {part.content}
                     </p>
                   )}
                   {"items" in part && (
-                    <ul className="mt-2 space-y-2 text-sm text-cream/75">
+                    <ul className="mt-3 space-y-2.5 text-base text-ivory">
                       {part.items?.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_6px_rgba(245,197,24,0.8)]" />
+                        <li key={item} className="flex items-start gap-2.5">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_8px_rgba(245,197,24,0.9)]" />
                           {item}
                         </li>
                       ))}

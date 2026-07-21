@@ -37,7 +37,7 @@ export function CultureSection() {
 
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <MotionSection>
-            <div className="space-y-5 text-base leading-relaxed text-cream/85 lg:text-lg">
+            <div className="space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
               {cultureContent.mainParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -106,12 +106,12 @@ export function CultureSection() {
                   <div className="min-w-0 flex-1 space-y-1.5">
                     <div className="flex items-start gap-2">
                       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-amber" strokeWidth={2} />
-                      <p className="text-sm font-semibold leading-snug text-cream lg:text-base">
+                      <p className="text-base font-bold leading-snug text-white lg:text-lg">
                         {block.title}
                       </p>
                     </div>
                     {block.description && (
-                      <p className="text-xs leading-relaxed text-cream/65 lg:text-sm">
+                      <p className="text-sm leading-relaxed text-ivory lg:text-base" style={{ lineHeight: 1.7 }}>
                         {block.description}
                       </p>
                     )}

@@ -80,7 +80,7 @@ export function Header() {
                 <BookOpen className="h-5 w-5 text-amber" strokeWidth={2} />
                 <span className="absolute -inset-1 rounded-xl border border-amber/20 opacity-0 transition-opacity duration-500 group-hover/logo:opacity-100" />
               </span>
-              <span className="truncate font-heading text-sm font-bold leading-tight text-gradient-gold sm:text-base">
+              <span className="truncate font-heading text-sm font-bold leading-tight text-amber sm:text-base" style={{ wordSpacing: "0.08em", textShadow: "0 1px 6px rgba(245,197,24,0.4)" }}>
                 Lịch sử Đảng Cộng sản Việt Nam
               </span>
             </a>
@@ -111,10 +111,10 @@ export function Header() {
                     key={link.section}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`relative rounded-full px-3.5 py-2 text-sm font-medium no-underline transition-all duration-300 ${
+                    className={`relative rounded-full px-3.5 py-2 text-sm font-semibold no-underline transition-all duration-300 ${
                       isActive
                         ? "text-amber"
-                        : "text-cream/70 hover:text-amber"
+                        : "text-ivory hover:text-amber"
                     }`}
                   >
                     {isActive && (
@@ -150,10 +150,10 @@ export function Header() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className={`border-b border-amber/10 px-5 py-3.5 text-sm font-medium no-underline transition-colors last:border-b-0 ${
+                      className={`border-b border-amber/10 px-5 py-3.5 text-sm font-semibold no-underline transition-colors last:border-b-0 ${
                         isActive
                           ? "bg-amber/10 text-amber"
-                          : "text-cream/80 hover:bg-amber/5 hover:text-amber"
+                          : "text-ivory hover:bg-amber/5 hover:text-amber"
                       }`}
                     >
                       <span className="flex items-center gap-2">

@@ -47,7 +47,7 @@ export function ConclusionSection() {
                 filter: "blur(8px)",
               }}
             />
-            <div className="relative space-y-5 text-base leading-relaxed text-cream/85 lg:text-lg">
+            <div className="relative space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
               {conclusionContent.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -65,7 +65,7 @@ export function ConclusionSection() {
             />
             <Sparkles className="absolute -left-12 -top-2 h-8 w-8 text-amber opacity-50" />
             <Sparkles className="absolute -right-12 -top-2 h-8 w-8 text-amber opacity-50" />
-            <p className="relative font-heading text-2xl font-bold text-gradient-aurora text-glow-gold sm:text-3xl lg:text-4xl xl:text-5xl">
+            <p className="relative font-heading text-3xl font-bold text-amber sm:text-4xl lg:text-5xl xl:text-6xl" style={{ wordSpacing: "0.06em", letterSpacing: "0.005em", textShadow: "0 4px 24px rgba(245,197,24,0.5), 0 2px 8px rgba(0,0,0,0.5)" }}>
               &ldquo;{conclusionContent.highlight}&rdquo;
             </p>
           </div>
@@ -77,15 +77,15 @@ export function ConclusionSection() {
             onClick={scrollToTop}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group/btn inline-flex items-center gap-2 rounded-full border-2 border-amber bg-[#161e35]/60 px-8 py-3 font-semibold text-amber backdrop-blur-md transition-all hover:bg-gradient-to-r hover:from-crimson hover:via-burgundy hover:to-crimson hover:text-cream hover:shadow-[0_8px_32px_rgba(245,197,24,0.3)]"
+            className="group/btn inline-flex items-center gap-2.5 rounded-full border-2 border-amber bg-[#161e35]/70 px-10 py-3.5 text-base font-bold text-amber backdrop-blur-md transition-all hover:bg-gradient-to-r hover:from-crimson hover:via-burgundy hover:to-crimson hover:text-white hover:shadow-[0_8px_32px_rgba(245,197,24,0.4)]"
           >
             <ArrowUp className="h-5 w-5 transition-transform group-hover/btn:-translate-y-0.5" />
             {conclusionContent.backToTop}
           </motion.button>
         </MotionSection>
 
-        <footer className="mt-16 border-t border-amber/15 pt-8 text-center text-sm text-cream/50">
-          <p className="text-gradient-gold font-semibold">
+        <footer className="mt-16 border-t border-amber/15 pt-8 text-center text-sm text-ivory/80 lg:text-base">
+          <p className="font-bold text-amber" style={{ textShadow: "0 1px 6px rgba(245,197,24,0.3)" }}>
             Chương 3 — Lịch sử Đảng Cộng sản Việt Nam · Môn học: VNR202
           </p>
           <p className="mt-1">Giáo trình Lịch sử Đảng Cộng sản Việt Nam · Bộ GD&ĐT</p>

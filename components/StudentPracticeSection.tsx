@@ -51,7 +51,7 @@ function ChecklistItem({
           <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
         </motion.span>
       </motion.span>
-      <span className="flex-1 text-justify text-base font-medium text-cream lg:text-lg">{text}</span>
+      <span className="flex-1 text-justify text-base font-semibold text-ivory lg:text-lg" style={{ lineHeight: 1.65 }}>{text}</span>
     </motion.li>
   );
 }
@@ -76,14 +76,14 @@ export function StudentPracticeSection() {
                     filter: "blur(8px)",
                   }}
                 />
-                <div className="relative space-y-4">
-                  <p className="text-base leading-relaxed text-cream/85 lg:text-lg">
+                <div className="relative space-y-5">
+                  <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
                     {studentPracticeContent.intro}
                   </p>
-                  <p className="text-base leading-relaxed text-cream/80 lg:text-lg">
+                  <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
                     {studentPracticeContent.detail}
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-cream/80 lg:text-lg">
+                  <p className="mt-4 text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
                     {studentPracticeContent.closing}
                   </p>
                 </div>

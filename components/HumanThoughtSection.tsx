@@ -79,11 +79,11 @@ export function HumanThoughtSection() {
                     >
                       <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
                     </motion.div>
-                    <h3 className="font-heading text-lg font-bold text-cream lg:text-xl">
+                    <h3 className="font-heading text-xl font-bold text-white lg:text-2xl">
                       {card.title}
                     </h3>
                   </div>
-                  <div className="space-y-3 text-sm leading-relaxed text-cream/75 lg:text-base">
+                  <div className="space-y-3 text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
                     {card.paragraphs.map((p, j) => (
                       <p key={j}>{p}</p>
                     ))}

@@ -26,26 +26,36 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 17px; /* Larger base font for TV presentation */
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px; /* Even larger on desktop/TV */
+    }
   }
 
   body {
-    @apply bg-[#0a0e1a] font-body leading-relaxed text-cream antialiased;
+    @apply bg-[#0a0e1a] font-body text-cream antialiased;
     background-image:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(185, 28, 44, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 50% at 80% 30%, rgba(245, 197, 24, 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 70% at 50% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 40% at 70% 60%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(185, 28, 44, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 80% 30%, rgba(245, 197, 24, 0.14) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 70% at 50% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 70% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 45%);
     background-attachment: fixed;
+    line-height: 1.75; /* More spacing for readability */
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.005em;
+    line-height: 1.15;
+    color: #ffffff; /* Pure white headings for max contrast */
   }
 
   ::selection {
-    background: rgba(245, 197, 24, 0.35);
-    color: #faf6ec;
+    background: rgba(245, 197, 24, 0.5);
+    color: #ffffff;
   }
 
   /* Custom scrollbar */
@@ -69,6 +79,7 @@
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
+    line-height: 1.75;
   }
 
   section[id] {
@@ -309,21 +320,21 @@
   }
 
   .glass-card-dark {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border: 1px solid rgba(245, 197, 24, 0.12);
+    background: linear-gradient(135deg, rgba(22, 30, 53, 0.92) 0%, rgba(10, 14, 26, 0.94) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(245, 197, 24, 0.2);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .glass-card-dark:hover {
-    border-color: rgba(245, 197, 24, 0.32);
+    border-color: rgba(245, 197, 24, 0.4);
     box-shadow:
-      0 16px 48px rgba(0, 0, 0, 0.4),
-      0 0 32px rgba(245, 197, 24, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 16px 48px rgba(0, 0, 0, 0.6),
+      0 0 32px rgba(245, 197, 24, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   /* Section heading underline */

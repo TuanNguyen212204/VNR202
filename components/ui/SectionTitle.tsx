@@ -37,17 +37,21 @@ export function SectionTitle({
         </motion.div>
       )}
 
-      <h2 className="font-heading text-3xl font-bold leading-tight text-cream sm:text-4xl lg:text-5xl">
+      <h2
+        className="font-heading text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-5xl"
+        style={{ wordSpacing: "0.12em", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}
+      >
         {titleWords.map((word, i) => (
           <motion.span
             key={i}
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="inline-block"
+            style={{ marginRight: "0.35em" }}
           >
-            {word}{" "}
+            {word}
           </motion.span>
         ))}
       </h2>
@@ -58,7 +62,8 @@ export function SectionTitle({
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-4 text-base text-cream/65 lg:text-lg"
+          className="mt-5 text-lg font-medium text-ivory lg:text-xl"
+          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
         >
           {subtitle}
         </motion.p>
