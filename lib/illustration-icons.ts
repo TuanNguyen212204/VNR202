@@ -1,14 +1,20 @@
 import {
+  AlertTriangle,
   BookOpen,
+  DollarSign,
   Flame,
   Globe2,
   Heart,
+  Landmark,
   Mic2,
   Scale,
+  ShieldAlert,
   ShieldCheck,
   Smartphone,
   Sparkles,
   Sprout,
+  TrendingDown,
+  TrendingUp,
   User,
   Users,
   type LucideIcon,
@@ -27,6 +33,12 @@ export const illustrationIconMap: Record<IllustrationIconName, LucideIcon> = {
   ShieldCheck,
   Sparkles,
   Globe2,
+  TrendingUp,
+  TrendingDown,
+  Landmark,
+  AlertTriangle,
+  DollarSign,
+  ShieldAlert,
 };
 
 export type ChecklistIconName =
@@ -34,7 +46,11 @@ export type ChecklistIconName =
   | "ShieldCheck"
   | "Smartphone"
   | "Users"
-  | "Sparkles";
+  | "Sparkles"
+  | "TrendingDown"
+  | "AlertTriangle"
+  | "ShieldAlert"
+  | "DollarSign";
 
 export const checklistIconMap: Record<ChecklistIconName, LucideIcon> = {
   BookOpen,
@@ -42,4 +58,8 @@ export const checklistIconMap: Record<ChecklistIconName, LucideIcon> = {
   Smartphone,
   Users,
   Sparkles,
+  TrendingDown,
+  AlertTriangle,
+  ShieldAlert,
+  DollarSign,
 };

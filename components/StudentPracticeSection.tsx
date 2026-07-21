@@ -56,11 +56,11 @@ function ChecklistItem({
 
 export function StudentPracticeSection() {
   return (
-    <section id="lien-he" className="relative z-10 px-6 py-20 lg:py-28">
+    <section id="tham-nhung" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Liên hệ thực tiễn"
-          title="Vận dụng với sinh viên hiện nay"
+          badge="Phần IV"
+          title="Nguyên nhân và tác hại của tham nhũng"
           align="center"
         />
 

@@ -25,12 +25,12 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title:
-    "Tư tưởng Hồ Chí Minh về con người, văn hóa và đạo đức — Thuyết trình",
+    "Thành tựu, kinh nghiệm của công cuộc đổi mới và vấn đề tham nhũng — Thuyết trình VNR202",
   description:
-    "Website thuyết trình môn Tư tưởng Hồ Chí Minh: Xây dựng văn hóa, đạo đức, con người Việt Nam hiện nay",
+    "Website thuyết trình môn VNR202: Chương 3 — Đảng lãnh đạo cả nước quá độ lên chủ nghĩa xã hội và tiến hành công cuộc đổi mới (1975 - 2018)",
   openGraph: {
-    title: "Tư tưởng Hồ Chí Minh về con người, văn hóa và đạo đức",
-    description: "Website thuyết trình — Môn Tư tưởng Hồ Chí Minh",
+    title: "Thành tựu, kinh nghiệm của công cuộc đổi mới và vấn đề tham nhũng",
+    description: "Website thuyết trình — Môn VNR202 (Lịch sử Đảng Cộng sản Việt Nam)",
     images: ["/images/hero-landing.jpg"],
     locale: "vi_VN",
     type: "website",

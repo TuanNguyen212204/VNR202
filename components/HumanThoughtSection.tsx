@@ -1,4 +1,10 @@
-import { Heart, Sprout, User, Users, type LucideIcon } from "lucide-react";
+import {
+  Heart,
+  Landmark,
+  ShieldCheck,
+  TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
 import { humanThoughtCards } from "@/lib/presentation-content";
 import { getIllustration, humanIllustrationIds } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -6,20 +12,20 @@ import { MotionCard } from "@/components/ui/MotionCard";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
 
 const iconMap: Record<string, LucideIcon> = {
-  User,
+  TrendingUp,
   Heart,
-  Users,
-  Sprout,
+  ShieldCheck,
+  Landmark,
 };
 
 export function HumanThoughtSection() {
   return (
-    <section id="con-nguoi" className="relative z-10 bg-section-gradient px-6 py-20 lg:py-28">
+    <section id="thanh-tuu" className="relative z-10 bg-section-gradient px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần III"
-          title="Tư tưởng Hồ Chí Minh về con người"
-          subtitle="Con người — mục tiêu, động lực và chiến lược trồng người"
+          badge="Phần III.1"
+          title="Thành tựu của công cuộc đổi mới"
+          subtitle="Kinh tế, văn hóa - xã hội, quốc phòng - an ninh và xây dựng Đảng"
         />
 
         <div className="grid gap-6 md:grid-cols-2">

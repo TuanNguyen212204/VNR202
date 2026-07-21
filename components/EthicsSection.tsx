@@ -17,15 +17,15 @@ const iconMap: Record<string, LucideIcon> = {
 const ethicsMain = getIllustration("ethics");
 
 export function EthicsSection() {
-  const [openId, setOpenId] = useState<string | null>("role");
+  const [openId, setOpenId] = useState<string | null>("principle");
 
   return (
-    <section id="dao-duc" className="relative z-10 bg-section-gradient px-6 py-20 lg:py-28">
+    <section id="kinh-nghiem" className="relative z-10 bg-section-gradient px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần IV.2"
-          title="Xây dựng đạo đức cách mạng"
-          subtitle="Đạo đức là gốc của người cách mạng"
+          badge="Phần III.3"
+          title="Kinh nghiệm của Đảng"
+          subtitle="Những bài học quý báu qua hơn 30 năm đổi mới"
         />
 
         <MotionSection>

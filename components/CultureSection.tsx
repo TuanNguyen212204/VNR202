@@ -1,4 +1,10 @@
-import { Globe2, Heart, Scale, Sprout, type LucideIcon } from "lucide-react";
+import {
+  AlertTriangle,
+  Scale,
+  TrendingDown,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import { cultureContent } from "@/lib/presentation-content";
 import { cultureIllustrationIds, getIllustration } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -10,20 +16,20 @@ import { CultureInfographic } from "@/components/CultureInfographic";
 const cultureIllustration = getIllustration("culture");
 
 const iconMap: Record<string, LucideIcon> = {
-  Sprout,
-  Heart,
+  TrendingDown,
+  Users,
+  AlertTriangle,
   Scale,
-  Globe2,
 };
 
 export function CultureSection() {
   return (
-    <section id="van-hoa" className="relative z-10 px-6 py-20 lg:py-28">
+    <section id="han-che" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần IV.1"
-          title="Xây dựng và phát triển văn hóa, con người"
-          subtitle="Văn hóa — nền tảng tinh thần của xã hội"
+          badge="Phần III.2"
+          title="Hạn chế và nguyên nhân"
+          subtitle="Những yếu kém còn tồn tại và nguyên nhân khách quan, chủ quan"
         />
 
         <div className="grid items-start gap-12 lg:grid-cols-2">

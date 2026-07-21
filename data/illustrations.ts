@@ -27,7 +27,13 @@ export type IllustrationIconName =
   | "Scale"
   | "ShieldCheck"
   | "Sparkles"
-  | "Globe2";
+  | "Globe2"
+  | "TrendingUp"
+  | "TrendingDown"
+  | "Landmark"
+  | "AlertTriangle"
+  | "DollarSign"
+  | "ShieldAlert";
 
 export type IllustrationMeta = {
   id: string;
@@ -68,21 +74,21 @@ export const illustrations: Record<string, IllustrationMeta> = {
   "human-concept": {
     id: "human-concept",
     imageSrc: "/images/anh3.jpg",
-    title: "Quan niệm về con người",
-    description: "Con người gắn kết với gia đình, xã hội, dân tộc và thiên nhiên.",
+    title: "Thành tựu kinh tế",
+    description: "Tăng trưởng GDP, hội nhập quốc tế, hoàn thiện thể chế kinh tế thị trường định hướng XHCN.",
     prompt:
-      "Human-centered Vietnamese social illustration, one person connected with family, community, nation and nature through soft glowing lines, warm red and gold palette, elegant educational style, no text.",
+      "Vietnamese economic achievement illustration, upward growth chart, modern skyline, ports and logistics, golden light, burgundy and cream palette, elegant educational style, no text.",
     variant: "human",
-    icon: "User",
+    icon: "TrendingUp",
     section: "human",
   },
   "human-goal": {
     id: "human-goal",
     imageSrc: "/images/anh5.jpg",
-    title: "Mục tiêu của cách mạng",
-    description: "Gia đình, người dân, trẻ em sống ấm no, hạnh phúc.",
+    title: "Văn hóa - xã hội chuyển biến tích cực",
+    description: "Đời sống tinh thần phong phú, xóa đói giảm nghèo, nâng cao dân trí.",
     prompt:
-      "Warm illustration of Vietnamese people living happily, family, workers, children, peaceful community, symbol of freedom, well-being and happiness, soft golden light, respectful tone, no text.",
+      "Warm illustration of Vietnamese community life, cultural festivals, families, education, social welfare, soft golden light, respectful tone, no text.",
     variant: "human",
     icon: "Heart",
     section: "human",
@@ -90,23 +96,23 @@ export const illustrations: Record<string, IllustrationMeta> = {
   "human-motive": {
     id: "human-motive",
     imageSrc: "/images/anh6.jpg",
-    title: "Động lực của cách mạng",
-    description: "Nhân dân đoàn kết, cùng hướng về ánh sáng.",
+    title: "Quốc phòng, an ninh, đối ngoại",
+    description: "Giữ vững độc lập chủ quyền, hội nhập quốc tế, nâng cao vị thế đất nước.",
     prompt:
-      "Vietnamese people standing together in unity, diverse ages and occupations, moving toward warm light, symbol of people as the driving force of society, elegant semi-realistic illustration, burgundy gold palette, no text.",
+      "Vietnamese national defense and diplomacy illustration, flag, handshake, dove of peace, golden light, burgundy gold palette, no text.",
     variant: "human",
-    icon: "Users",
+    icon: "ShieldCheck",
     section: "human",
   },
   "human-strategy": {
     id: "human-strategy",
     imageSrc: "/images/anh7.png",
-    title: "Chiến lược trồng người",
-    description: "Bàn tay nâng mầm cây từ cuốn sách, nuôi dưỡng thế hệ tương lai.",
+    title: "Xây dựng Đảng và Nhà nước pháp quyền",
+    description: "Dân chủ XHCN, Nhà nước pháp quyền, vai trò lãnh đạo của Đảng ngày càng vững mạnh.",
     prompt:
-      "Symbolic education illustration, hands gently holding a young green sprout growing from an open book, students in soft background, lotus and golden light, concept of nurturing future generations, no text.",
+      "Symbolic illustration of party building and rule of law, classical building columns, scales of justice, lotus and golden light, no text.",
     variant: "human",
-    icon: "Sprout",
+    icon: "Landmark",
     section: "human",
   },
   culture: {
@@ -245,21 +251,21 @@ export function getIllustration(id: string): IllustrationMeta {
 }
 
 export const humanIllustrationIds: Record<string, string> = {
-  concept: "human-concept",
-  goal: "human-goal",
-  motive: "human-motive",
-  strategy: "human-strategy",
+  economy: "human-concept",
+  cultureSociety: "human-goal",
+  defenseForeign: "human-motive",
+  politicsParty: "human-strategy",
 };
 
 export const ethicsIllustrationIds: Record<string, string> = {
-  role: "ethics-role",
+  principle: "ethics-role",
   content: "ethics-content",
   principles: "ethics-principles",
 };
 
 export const cultureIllustrationIds: Record<string, string> = {
-  holistic: "culture-holistic",
-  environment: "culture-environment",
-  political: "culture-political",
-  integration: "culture-integration",
+  "economy-limit": "culture-holistic",
+  "social-issue": "culture-environment",
+  "four-risks": "culture-political",
+  "root-cause": "culture-integration",
 };

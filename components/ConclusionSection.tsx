@@ -64,8 +64,8 @@ export function ConclusionSection() {
         </MotionSection>
 
         <footer className="mt-16 border-t border-brown/10 pt-8 text-center text-sm text-brown/50">
-          <p>Chương VI — Tư tưởng Hồ Chí Minh · Môn học: Tư tưởng Hồ Chí Minh</p>
-          <p className="mt-1">Giáo trình Tư tưởng Hồ Chí Minh · Bộ GD&ĐT · 2019</p>
+          <p>Chương 3 — Lịch sử Đảng Cộng sản Việt Nam · Môn học: VNR202</p>
+          <p className="mt-1">Giáo trình Lịch sử Đảng Cộng sản Việt Nam · Bộ GD&ĐT</p>
         </footer>
       </div>
     </section>
