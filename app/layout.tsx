@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Thành tựu, kinh nghiệm của công cuộc đổi mới và vấn đề tham nhũng",
     description: "Website thuyết trình — Môn VNR202 (Lịch sử Đảng Cộng sản Việt Nam)",
-    images: ["/images/hero-landing.jpg"],
     locale: "vi_VN",
     type: "website",
   },
@@ -44,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
-      <body>{children}</body>
+      <body className="bg-[#0a0e1a] text-cream">{children}</body>
     </html>
   );
 }

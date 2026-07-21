@@ -18,9 +18,9 @@ const petals = Array.from({ length: 22 }, (_, i) => ({
 
 function PetalSvg({ type }: { type: PetalType }) {
   const fills: Record<PetalType, { main: string; light: string }> = {
-    "petal-red": { main: "#C8102E", light: "#E85D6A" },
-    "petal-gold": { main: "#D4A017", light: "#F5C518" },
-    "petal-pink": { main: "#E85D6A", light: "#F5B8C0" },
+    "petal-red": { main: "#dc2626", light: "#f43f5e" },
+    "petal-gold": { main: "#f5c518", light: "#fbbf24" },
+    "petal-pink": { main: "#f43f5e", light: "#fb7185" },
   };
 
   const { main, light } = fills[type];
@@ -29,7 +29,7 @@ function PetalSvg({ type }: { type: PetalType }) {
     <svg viewBox="0 0 28 40" fill="none" className="h-full w-full">
       <ellipse cx="14" cy="20" rx="9" ry="16" fill={main} opacity="0.85" />
       <ellipse cx="14" cy="18" rx="5" ry="10" fill={light} opacity="0.5" />
-      <path d="M14 6 Q16 14 14 22 Q12 14 14 6" fill="white" opacity="0.15" />
+      <path d="M14 6 Q16 14 14 22 Q12 14 14 6" fill="white" opacity="0.2" />
     </svg>
   );
 }
@@ -56,6 +56,7 @@ export function FallingFlowers() {
             opacity: f.opacity,
             animationDuration: `${f.duration}s`,
             animationDelay: `${f.delay}s`,
+            filter: "drop-shadow(0 0 4px rgba(245,197,24,0.3))",
             ["--sway" as string]: `${f.sway}px`,
             ["--sway-reverse" as string]: `${-f.sway * 0.7}px`,
           }}

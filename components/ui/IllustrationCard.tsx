@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, type ReactNode, type MouseEvent } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import type { IllustrationIconName, IllustrationVariant } from "@/data/illustrations";
 import { blurDataURL } from "@/lib/blur";
@@ -58,6 +58,24 @@ export function IllustrationCard({
   const showImage = Boolean(imageSrc && !imageError && !skipImage && !children);
   const ResolvedIcon = icon ?? (iconName ? illustrationIconMap[iconName] : undefined);
 
+  // 3D tilt
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { stiffness: 200, damping: 20 };
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), springConfig);
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (reduced) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
   const inner = children ? (
     <div className="relative h-full w-full">{children}</div>
   ) : showImage && imageSrc ? (
@@ -84,17 +102,28 @@ export function IllustrationCard({
 
   const card = (
     <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 24, scale: reduced ? 1 : 0.98 }}
+      initial={{ opacity: 0, y: reduced ? 0 : 32, scale: reduced ? 1 : 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      whileHover={
-        reduced
-          ? undefined
-          : { scale: 1.02, y: -4, filter: "brightness(1.03)" }
-      }
-      className={`relative overflow-hidden rounded-3xl border border-gold/30 bg-white/40 shadow-xl backdrop-blur-md ${sizeClasses[size]} ${className}`}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX: reduced ? 0 : rotateX, rotateY: reduced ? 0 : rotateY, transformStyle: "preserve-3d" }}
+      className={`group relative overflow-hidden rounded-3xl border border-amber/20 bg-dark-card backdrop-blur-md ${sizeClasses[size]} ${className}`}
     >
+      {/* Shine sweep */}
+      <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <div className="absolute inset-0 animate-shine-sweep bg-gradient-to-r from-transparent via-amber/10 to-transparent" />
+      </div>
+
+      {/* Glow border on hover */}
+      <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{
+          background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2), rgba(16,185,129,0.2))",
+          filter: "blur(8px)",
+        }}
+      />
+
       {inner}
     </motion.div>
   );

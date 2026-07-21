@@ -14,10 +14,10 @@ type MotionSectionProps = Omit<HTMLMotionProps<"div">, "variants" | "initial" | 
 };
 
 const offsets: Record<MotionVariant, { x?: number; y?: number; scale?: number }> = {
-  "fade-up": { y: 32 },
-  "slide-left": { x: -48 },
-  "slide-right": { x: 48 },
-  "scale-fade": { scale: 0.94 },
+  "fade-up": { y: 40 },
+  "slide-left": { x: -60 },
+  "slide-right": { x: 60 },
+  "scale-fade": { scale: 0.92 },
   fade: {},
 };
 
@@ -37,7 +37,7 @@ export function MotionSection({
     ? { duration: 0.25, ease: "easeOut", delay }
     : spring
       ? { type: "spring", stiffness: 90, damping: 16, mass: 0.6, delay }
-      : { duration: 0.6, ease: "easeOut", delay };
+      : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay };
 
   return (
     <motion.div
@@ -57,14 +57,14 @@ export const staggerContainerVariants = (reduced: boolean): Variants => ({
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: reduced ? 0 : 0.1,
+      staggerChildren: reduced ? 0 : 0.12,
       delayChildren: reduced ? 0 : 0.05,
     },
   },
 });
 
 export const staggerItemVariants = (reduced: boolean): Variants => ({
-  hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 },
+  hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 32, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,

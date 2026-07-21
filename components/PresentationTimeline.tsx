@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { timelineContent } from "@/lib/presentation-content";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 
@@ -13,7 +13,7 @@ export function PresentationTimeline() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="muc-luc" className="relative z-10 px-6 py-20 lg:py-24">
+    <section id="muc-luc" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-4xl">
         <SectionTitle
           badge={timelineContent.badge}
@@ -23,68 +23,101 @@ export function PresentationTimeline() {
         />
 
         <div className="relative">
-          <div
-            className="absolute top-0 bottom-0 left-[1.15rem] w-0.5 bg-gradient-to-b from-burgundy/20 via-gold/40 to-burgundy/20 lg:left-1/2 lg:-translate-x-px"
-            aria-hidden
-          />
+          {/* Central glowing line */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute top-0 bottom-0 left-[1.15rem] origin-top lg:left-1/2 lg:-translate-x-px"
+          >
+            <div className="h-full w-0.5 bg-gradient-to-b from-transparent via-amber/40 to-transparent" />
+            <div
+              className="absolute inset-0 w-1 -translate-x-[2px] blur-md"
+              style={{
+                background: "linear-gradient(180deg, transparent, rgba(245,197,24,0.4), transparent)",
+              }}
+            />
+          </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {timelineContent.items.map((item, index) => {
               const isEven = index % 2 === 0;
 
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: reduced ? 0 : 24 }}
+                  initial={{ opacity: 0, y: reduced ? 0 : 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className={`relative flex items-start gap-6 lg:gap-0 ${
                     isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                   }`}
                 >
+                  {/* Number node */}
                   <div className="relative z-10 flex w-9 shrink-0 justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-gold bg-white text-sm font-bold text-burgundy shadow-md">
-                      {item.id}
-                    </span>
+                    <div className="relative">
+                      <motion.div
+                        animate={reduced ? undefined : { scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                        className="absolute inset-0 rounded-full bg-amber/40"
+                      />
+                      <span className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-amber bg-gradient-to-br from-crimson to-burgundy text-sm font-bold text-amber shadow-[0_0_20px_rgba(245,197,24,0.4)]">
+                        {item.id}
+                      </span>
+                    </div>
                   </div>
 
-                  <button
+                  {/* Card */}
+                  <motion.button
                     type="button"
                     onClick={() => scrollToSection(item.href)}
-                    className={`group glass-card card-hover ml-0 w-full cursor-pointer p-5 text-left transition-colors lg:w-[calc(50%-2.5rem)] ${
+                    whileHover={reduced ? undefined : { y: -4, scale: 1.01 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className={`group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark p-6 text-left backdrop-blur-md transition-all hover:border-amber/50 hover:shadow-[0_8px_40px_-8px_rgba(245,197,24,0.3)] lg:w-[calc(50%-2.5rem)] ${
                       isEven ? "lg:mr-auto lg:pr-8" : "lg:ml-auto lg:pl-8"
                     }`}
                   >
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className="rounded-full bg-burgundy/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-burgundy">
-                        {item.badge}
-                      </span>
-                      <ChevronRight className="h-4 w-4 text-gold opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+                    {/* Hover glow */}
+                    <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2), transparent)",
+                        filter: "blur(8px)",
+                      }}
+                    />
+
+                    <div className="relative">
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        <span className="rounded-full border border-amber/30 bg-amber/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber">
+                          {item.badge}
+                        </span>
+                        <ArrowRight className="h-4 w-4 text-amber opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                      </div>
+
+                      <h3 className="font-heading text-lg font-bold text-cream lg:text-xl">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-relaxed text-cream/70 lg:text-base">
+                        {item.description}
+                      </p>
+
+                      {item.subItems.length > 0 && (
+                        <ul className="mt-4 space-y-2 border-t border-amber/15 pt-3">
+                          {item.subItems.map((sub) => (
+                            <li
+                              key={sub}
+                              className="flex items-start gap-2 text-sm text-cream/75"
+                            >
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_6px_rgba(245,197,24,0.8)]" />
+                              {sub}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
-
-                    <h3 className="font-heading text-lg font-bold text-brown lg:text-xl">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-relaxed text-brown/75 lg:text-base">
-                      {item.description}
-                    </p>
-
-                    {item.subItems.length > 0 && (
-                      <ul className="mt-3 space-y-1.5 border-t border-gold/20 pt-3">
-                        {item.subItems.map((sub) => (
-                          <li
-                            key={sub}
-                            className="flex items-start gap-2 text-sm text-brown/70"
-                          >
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                            {sub}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </button>
+                  </motion.button>
 
                   <div className="hidden flex-1 lg:block" aria-hidden />
                 </motion.div>

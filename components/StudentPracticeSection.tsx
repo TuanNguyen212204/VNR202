@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Check } from "lucide-react";
 import { studentPracticeContent } from "@/lib/presentation-content";
@@ -23,33 +23,35 @@ function ChecklistItem({
 }) {
   const ref = useRef<HTMLLIElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const reduced = useReducedMotion();
   const Icon = checklistIconMap[iconName];
 
   return (
     <motion.li
       ref={ref}
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: reduced ? 0 : -30 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ delay: index * 0.12, duration: 0.4 }}
-      className="flex items-center gap-4 rounded-xl border border-white/40 bg-white/50 px-5 py-4 backdrop-blur-sm"
+      transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={reduced ? undefined : { x: 4, scale: 1.01 }}
+      className="group flex items-center gap-4 rounded-xl border border-amber/20 bg-glass-dark px-5 py-4 backdrop-blur-md transition-colors hover:border-amber/40"
     >
       <motion.span
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
-        transition={{ delay: index * 0.12 + 0.15, type: "spring", stiffness: 200 }}
-        className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/25"
+        transition={{ delay: index * 0.1 + 0.15, type: "spring", stiffness: 200 }}
+        className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber/30 to-crimson/20 shadow-[0_0_16px_rgba(245,197,24,0.25)]"
       >
-        <Icon className="h-5 w-5 text-burgundy" strokeWidth={2} />
+        <Icon className="h-5 w-5 text-amber" strokeWidth={2} />
         <motion.span
           initial={{ scale: 0, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ delay: index * 0.12 + 0.35, type: "spring", stiffness: 260 }}
-          className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-jade/80"
+          transition={{ delay: index * 0.1 + 0.35, type: "spring", stiffness: 260 }}
+          className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-jade shadow-[0_0_8px_rgba(16,185,129,0.6)]"
         >
           <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
         </motion.span>
       </motion.span>
-      <span className="flex-1 text-justify text-base font-medium text-brown lg:text-lg">{text}</span>
+      <span className="flex-1 text-justify text-base font-medium text-cream lg:text-lg">{text}</span>
     </motion.li>
   );
 }
@@ -64,19 +66,27 @@ export function StudentPracticeSection() {
           align="center"
         />
 
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <MotionSection>
-              <div className="glass-card mb-10 p-8 lg:p-10">
-                <p className="mb-4 text-base leading-relaxed text-brown/85 lg:text-lg">
-                  {studentPracticeContent.intro}
-                </p>
-                <p className="text-base leading-relaxed text-brown/80 lg:text-lg">
-                  {studentPracticeContent.detail}
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-brown/80 lg:text-lg">
-                  {studentPracticeContent.closing}
-                </p>
+              <div className="group relative mb-10 overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-10">
+                <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(220,38,38,0.3), rgba(245,197,24,0.2))",
+                    filter: "blur(8px)",
+                  }}
+                />
+                <div className="relative space-y-4">
+                  <p className="text-base leading-relaxed text-cream/85 lg:text-lg">
+                    {studentPracticeContent.intro}
+                  </p>
+                  <p className="text-base leading-relaxed text-cream/80 lg:text-lg">
+                    {studentPracticeContent.detail}
+                  </p>
+                  <p className="mt-4 text-base leading-relaxed text-cream/80 lg:text-lg">
+                    {studentPracticeContent.closing}
+                  </p>
+                </div>
               </div>
             </MotionSection>
 
