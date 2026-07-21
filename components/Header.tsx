@@ -66,7 +66,7 @@ export function Header() {
                 <BookOpen className="h-4 w-4 text-burgundy" strokeWidth={2} />
               </span>
               <span className="truncate font-heading text-sm font-bold leading-tight text-burgundy sm:text-base">
-                Tư tưởng Hồ Chí Minh
+                Lịch sử Đảng Cộng sản Việt Nam
               </span>
             </a>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FallingFlowers } from "@/components/FallingFlowers";
 import { LOTUS_ICON_SRC } from "@/lib/assets";
@@ -44,6 +45,11 @@ function FloatingLotusBg({ x, y, scale, delay }: { x: string; y: string; scale: 
 }
 
 export function AnimatedBackground() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 800], [0, reduced ? 0 : 120]);
@@ -117,13 +123,13 @@ export function AnimatedBackground() {
       ))}
 
       {/* Floating lotus silhouettes */}
-      {!reduced &&
+      {mounted && !reduced &&
         lotusPositions.map((pos, i) => (
           <FloatingLotusBg key={i} {...pos} />
         ))}
 
       {/* Falling lotus petals & blossoms */}
-      <FallingFlowers />
+      {mounted && <FallingFlowers />}
 
       {/* Soft vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(250,247,240,0.3)_70%,rgba(123,30,46,0.06)_100%)]" />

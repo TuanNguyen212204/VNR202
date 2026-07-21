@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 type PetalType = "petal-red" | "petal-gold" | "petal-pink";
@@ -34,8 +35,13 @@ function PetalSvg({ type }: { type: PetalType }) {
 }
 
 export function FallingFlowers() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const reduced = useReducedMotion();
-  if (reduced) return null;
+  if (!mounted || reduced) return null;
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
