@@ -22,31 +22,34 @@ export function IntroSection() {
 
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <MotionSection>
-            <div className="group relative overflow-hidden rounded-3xl border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-12">
-              {/* Glow border on hover */}
-              <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2))",
-                  filter: "blur(12px)",
-                }}
-              />
+            <div className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-12">
+              {/* Traditional corner accents */}
+              <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/30 transition-colors group-hover:border-amber/50" />
+              <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/30 transition-colors group-hover:border-amber/50" />
 
-              <div className="relative space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
+              {/* Top decorative line */}
+              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-amber/20 to-transparent" />
+
+              <div className="relative space-y-5 text-lg leading-relaxed text-cream/90 lg:text-xl" style={{ lineHeight: 1.85 }}>
                 {introContent.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
 
-              {/* Quote */}
+              {/* Traditional quote block */}
               <motion.blockquote
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="relative mt-10 border-l-4 border-amber bg-gradient-to-r from-amber/15 to-transparent px-6 py-5 font-heading text-2xl font-bold italic text-amber lg:text-3xl"
-                style={{ wordSpacing: "0.08em", textShadow: "0 2px 12px rgba(245,197,24,0.3)" }}
+                className="relative mt-10 border-l-4 border-amber/60 bg-gradient-to-r from-amber/10 to-transparent pl-6 py-4 font-heading text-2xl font-bold italic text-amber lg:text-3xl"
+                style={{ 
+                  wordSpacing: "0.06em", 
+                  textShadow: "0 2px 8px rgba(212,168,75,0.3)",
+                  lineHeight: 1.4
+                }}
               >
-                <Quote className="absolute -left-3 -top-3 h-7 w-7 rounded-full bg-amber p-1.5 text-[#0a0e1a] shadow-[0_0_16px_rgba(245,197,24,0.8)]" />
+                <Quote className="absolute -left-3 -top-3 h-8 w-8 rounded-full bg-amber/20 p-1.5 text-amber shadow-[0_0 12px_rgba(212,168,75,0.4)]" />
                 {introContent.quote}
               </motion.blockquote>
             </div>

@@ -47,31 +47,27 @@ export function HumanThoughtSection() {
 
             const containerProps = mounted
               ? {
-                  initial: { opacity: 0, y: 40, scale: 0.96 },
+                  initial: { opacity: 0, y: 30, scale: 0.98 },
                   whileInView: { opacity: 1, y: 0, scale: 1 },
                   viewport: { once: true, margin: "-60px" },
                   transition: { duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
-                  whileHover: { y: -8 },
+                  whileHover: { y: -4 },
                 }
               : {};
 
             const iconProps = mounted
-              ? { whileHover: { rotate: 12, scale: 1.1 } }
+              ? { whileHover: { scale: 1.1 } }
               : {};
 
             return (
               <Container
                 key={card.id}
                 {...containerProps}
-                className="group relative overflow-hidden rounded-3xl border border-amber/20 bg-glass-dark backdrop-blur-md"
+                className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
-                {/* Glow on hover */}
-                <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(245,197,24,0.35), rgba(220,38,38,0.2), transparent)",
-                    filter: "blur(10px)",
-                  }}
-                />
+                {/* Traditional corner accents */}
+                <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
 
                 {/* Illustration */}
                 <IllustrationCard
@@ -91,15 +87,15 @@ export function HumanThoughtSection() {
                   <div className="mb-4 flex items-center gap-3">
                     <IconContainer
                       {...iconProps}
-                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber/30 bg-gradient-to-br from-crimson/30 to-burgundy/20 shadow-[0_0_16px_rgba(245,197,24,0.15)]"
+                      className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber/40 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0 12px_rgba(212,168,75,0.15)]"
                     >
                       <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
                     </IconContainer>
-                    <h3 className="font-heading text-xl font-bold text-white lg:text-2xl">
+                    <h3 className="font-heading text-xl font-bold text-cream lg:text-2xl">
                       {card.title}
                     </h3>
                   </div>
-                  <div className="space-y-3 text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
+                  <div className="space-y-3 text-base leading-relaxed text-cream/85 lg:text-lg" style={{ lineHeight: 1.8 }}>
                     {card.paragraphs.map((p, j) => (
                       <p key={j}>{p}</p>
                     ))}

@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ParticleField } from "@/components/three/ParticleField";
-import { FallingFlowers } from "@/components/FallingFlowers";
+import { useReducedMotion, motion, useScroll, useTransform } from "framer-motion";
+import { TraditionalPattern } from "@/components/ui/decorations/TraditionalPattern";
 
-function GlowingOrb({
+function TraditionalOrb({
   color,
   size,
   position,
   delay = 0,
-  blur = 100,
+  blur = 120,
 }: {
   color: string;
   size: string;
@@ -20,7 +19,7 @@ function GlowingOrb({
 }) {
   return (
     <div
-      className="pointer-events-none absolute aurora-blob animate-blob-aurora rounded-full"
+      className="pointer-events-none absolute animate-blob-aurora rounded-full"
       style={{
         width: size,
         height: size,
@@ -45,48 +44,72 @@ export function AnimatedBackground() {
 
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 600], [1, 0.85]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0.92]);
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-mesh"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-parchment"
       style={{ opacity }}
       aria-hidden
     >
-      {/* 3D Particle Field */}
-      {mounted && !reduced && <ParticleField />}
+      {/* Traditional Dragon Scale Pattern - subtle background */}
+      <div className="absolute inset-0 bg-pattern-dragon-scale opacity-60" />
 
-      {/* Aurora glow orbs */}
-      <GlowingOrb color="rgba(185, 28, 44, 0.55)" size="600px" position={{ top: "-200px", left: "-200px" }} delay={0} />
-      <GlowingOrb color="rgba(245, 197, 24, 0.4)" size="500px" position={{ top: "10%", right: "-180px" }} delay={3} />
-      <GlowingOrb color="rgba(16, 185, 129, 0.35)" size="550px" position={{ bottom: "-180px", left: "20%" }} delay={6} />
-      <GlowingOrb color="rgba(139, 92, 246, 0.3)" size="450px" position={{ top: "60%", right: "15%" }} delay={9} />
+      {/* Traditional Cloud Pattern - floating */}
+      <div className="absolute inset-0 bg-pattern-clouds opacity-40" />
 
-      {/* Animated grid */}
+      {/* Warm glowing orbs - candle/fire light feel */}
+      <TraditionalOrb 
+        color="rgba(200, 16, 46, 0.12)" 
+        size="500px" 
+        position={{ top: "-150px", left: "-100px" }} 
+        delay={0} 
+        blur={100}
+      />
+      <TraditionalOrb 
+        color="rgba(212, 168, 75, 0.08)" 
+        size="400px" 
+        position={{ top: "15%", right: "-80px" }} 
+        delay={4} 
+        blur={80}
+      />
+      <TraditionalOrb 
+        color="rgba(200, 16, 46, 0.06)" 
+        size="450px" 
+        position={{ bottom: "-100px", left: "25%" }} 
+        delay={8} 
+        blur={90}
+      />
+
+      {/* Traditional Pattern Overlay */}
+      {mounted && !reduced && <TraditionalPattern />}
+
+      {/* Top + bottom fade - paper roll effect */}
       <div
-        className="absolute inset-0 bg-grid animate-grid-move opacity-60"
+        className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#1a1410] to-transparent"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1a1410] to-transparent"
         aria-hidden
       />
 
-      {/* Top + bottom fade for depth */}
+      {/* Left + Right subtle borders */}
       <div
-        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0a0e1a] to-transparent"
+        className="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-[rgba(200,16,46,0.03)] to-transparent"
         aria-hidden
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0e1a] to-transparent"
+        className="absolute inset-y-0 right-0 w-4 bg-gradient-to-l from-[rgba(212,168,75,0.03)] to-transparent"
         aria-hidden
       />
 
-      {/* Falling lotus petals */}
-      <FallingFlowers />
-
-      {/* Vignette */}
+      {/* Vignette for depth */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(10, 14, 26, 0.5) 100%)",
+            "radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(26, 20, 16, 0.4) 100%)",
         }}
         aria-hidden
       />

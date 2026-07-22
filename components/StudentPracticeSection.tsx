@@ -36,7 +36,7 @@ function ChecklistItem({
         initial: { opacity: 0, x: -30 },
         animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0 },
         transition: { delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-        whileHover: { x: 4, scale: 1.01 },
+        whileHover: { x: 4 },
       }
     : {};
 
@@ -60,21 +60,21 @@ function ChecklistItem({
     <ItemContainer
       ref={ref}
       {...itemProps}
-      className="group flex items-center gap-4 rounded-xl border border-amber/20 bg-glass-dark px-5 py-4 backdrop-blur-md transition-colors hover:border-amber/40"
+      className="group flex items-center gap-4 rounded-lg border border-amber/20 bg-glass-dark px-5 py-4 backdrop-blur-md transition-colors hover:border-amber/40"
     >
       <IconOuter
         {...iconProps}
-        className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber/30 to-crimson/20 shadow-[0_0_16px_rgba(245,197,24,0.25)]"
+        className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber/25 to-crimson/15 shadow-[0_0 12px_rgba(212,168,75,0.2)]"
       >
         <Icon className="h-5 w-5 text-amber" strokeWidth={2} />
         <IconCheck
           {...checkProps}
-          className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-jade shadow-[0_0_8px_rgba(16,185,129,0.6)]"
+          className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-jade shadow-[0_0 6px_rgba(74,124,89,0.6)]"
         >
           <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
         </IconCheck>
       </IconOuter>
-      <span className="flex-1 text-justify text-base font-semibold text-ivory lg:text-lg" style={{ lineHeight: 1.65 }}>{text}</span>
+      <span className="flex-1 text-justify text-base font-semibold text-cream/90 lg:text-lg" style={{ lineHeight: 1.65 }}>{text}</span>
     </ItemContainer>
   );
 }
@@ -92,21 +92,19 @@ export function StudentPracticeSection() {
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <MotionSection>
-              <div className="group relative mb-10 overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-10">
-                <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(220,38,38,0.3), rgba(245,197,24,0.2))",
-                    filter: "blur(8px)",
-                  }}
-                />
+              <div className="group relative mb-10 overflow-hidden rounded-lg border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-10">
+                {/* Traditional corner accents */}
+                <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+
                 <div className="relative space-y-5">
-                  <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
+                  <p className="text-base leading-relaxed text-cream/90 lg:text-lg" style={{ lineHeight: 1.85 }}>
                     {studentPracticeContent.intro}
                   </p>
-                  <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
+                  <p className="text-base leading-relaxed text-cream/90 lg:text-lg" style={{ lineHeight: 1.85 }}>
                     {studentPracticeContent.detail}
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.75 }}>
+                  <p className="mt-4 text-base leading-relaxed text-cream/90 lg:text-lg" style={{ lineHeight: 1.85 }}>
                     {studentPracticeContent.closing}
                   </p>
                 </div>

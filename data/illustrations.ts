@@ -51,9 +51,9 @@ export type IllustrationMeta = {
 export const illustrations: Record<string, IllustrationMeta> = {
   hero: {
     id: "hero",
-    imageSrc: undefined,
+    imageSrc: "/images/trien-lam2.jpg",
     title: "Thành tựu và kinh nghiệm đổi mới",
-    description: "Cuốn sách mở phát sáng, hoa sen và bản đồ Việt Nam dạng ánh sáng.",
+    description: "Hình ảnh triển lãm về thành tựu đổi mới và xây dựng Đảng.",
     prompt:
       "Elegant Vietnamese educational illustration, an open book glowing with warm golden light, white lotus flowers, subtle Vietnam map outline in the background, faint Dong Son drum pattern, burgundy and gold color palette, soft cinematic lighting, clean composition, premium presentation style, no text, no watermark.",
     variant: "hero",
@@ -172,7 +172,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   ethics: {
     id: "ethics",
-    imageSrc: undefined,
+    imageSrc: "/images/kinh-nghiem.webp",
     title: "Kinh nghiệm của Đảng",
     description: "Năm bài học kinh nghiệm quý báu qua hơn 30 năm lãnh đạo công cuộc đổi mới.",
     prompt:
@@ -183,7 +183,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-role": {
     id: "ethics-role",
-    imageSrc: undefined,
+    imageSrc: "/images/kiendinh.png",
     title: "Kiên định mục tiêu, chủ động sáng tạo",
     description: "Vận dụng sáng tạo chủ nghĩa Mác - Lênin, tư tưởng Hồ Chí Minh phù hợp với điều kiện Việt Nam.",
     prompt:
@@ -194,7 +194,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-content": {
     id: "ethics-content",
-    imageSrc: undefined,
+    imageSrc: "/images/dan-la-goc.jpg",
     title: "Lấy dân làm gốc, đổi mới toàn diện",
     description: "Phát huy sức mạnh đại đoàn kết toàn dân tộc; đổi mới toàn diện, đồng bộ, có bước đi phù hợp.",
     prompt:
@@ -205,7 +205,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "ethics-principles": {
     id: "ethics-principles",
-    imageSrc: undefined,
+    imageSrc: "/images/image_nguyet.jpg",
     title: "Ba nguyên tắc cốt lõi",
     description: "Độc lập tự chủ gắn hội nhập quốc tế; kết hợp sức mạnh dân tộc với sức mạnh thời đại; tự đổi mới Đảng.",
     prompt:
@@ -222,7 +222,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
     prompt:
       "Vietnamese university students studying in a bright library, helping each other, using laptop and smartphone responsibly, warm academic atmosphere, clean modern illustration, gold and cream tones, no text.",
     variant: "practice",
-    icon: "BookOpen",
+    icon: "AlertTriangle",
     section: "practice",
     objectFit: "contain",
     objectPosition: "center",

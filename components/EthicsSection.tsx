@@ -38,23 +38,27 @@ export function EthicsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="group relative mb-12 overflow-hidden rounded-2xl border border-amber/30 bg-gradient-to-r from-crimson/15 via-burgundy/20 to-amber/15 px-8 py-8 text-center lg:py-10"
-              style={{ boxShadow: "0 0 40px rgba(245,197,24,0.15), inset 0 0 20px rgba(245,197,24,0.05)" }}
+              className="group relative mb-12 overflow-hidden rounded-lg border border-amber/30 bg-gradient-to-r from-crimson/10 via-burgundy/15 to-amber/10 px-8 py-8 text-center lg:py-10"
+              style={{ boxShadow: "0 0 30px rgba(212,168,75,0.1), inset 0 0 20px rgba(212,168,75,0.03)" }}
             >
-              <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
+              {/* Traditional corner accents */}
+              <div className="pointer-events-none absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-amber/30" />
+              <div className="pointer-events-none absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-amber/30" />
+              
+              <div className="absolute inset-0 bg-dot-pattern opacity-20" aria-hidden />
               <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
-              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
+              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.06em", textShadow: "0 2px 12px rgba(212,168,75,0.3)" }}>
                 {ethicsContent.quote}
               </p>
             </motion.blockquote>
           ) : (
             <blockquote
-              className="group relative mb-12 overflow-hidden rounded-2xl border border-amber/30 bg-gradient-to-r from-crimson/15 via-burgundy/20 to-amber/15 px-8 py-8 text-center lg:py-10"
-              style={{ boxShadow: "0 0 40px rgba(245,197,24,0.15), inset 0 0 20px rgba(245,197,24,0.05)" }}
+              className="group relative mb-12 overflow-hidden rounded-lg border border-amber/30 bg-gradient-to-r from-crimson/10 via-burgundy/15 to-amber/10 px-8 py-8 text-center lg:py-10"
+              style={{ boxShadow: "0 0 30px rgba(212,168,75,0.1), inset 0 0 20px rgba(212,168,75,0.03)" }}
             >
-              <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden />
+              <div className="absolute inset-0 bg-dot-pattern opacity-20" aria-hidden />
               <Quote className="mx-auto mb-3 h-8 w-8 text-amber opacity-50" />
-              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.08em", textShadow: "0 2px 16px rgba(245,197,24,0.4)" }}>
+              <p className="relative font-heading text-2xl font-bold italic text-amber lg:text-3xl xl:text-4xl" style={{ wordSpacing: "0.06em", textShadow: "0 2px 12px rgba(212,168,75,0.3)" }}>
                 {ethicsContent.quote}
               </p>
             </blockquote>
@@ -63,7 +67,7 @@ export function EthicsSection() {
 
         <div className="mb-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <MotionSection>
-            <p className="text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
+            <p className="text-lg leading-relaxed text-cream/90 lg:text-xl" style={{ lineHeight: 1.85 }}>
               {ethicsContent.intro}
             </p>
           </MotionSection>
@@ -91,7 +95,7 @@ export function EthicsSection() {
 
             return (
               <MotionSection key={part.id} delay={i * 0.08}>
-                <div className="group overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark backdrop-blur-md transition-colors hover:border-amber/40">
+                <div className="group overflow-hidden rounded-lg border border-amber/20 bg-glass-dark backdrop-blur-md transition-colors hover:border-amber/40">
                   <button
                     type="button"
                     className="flex w-full items-center justify-between p-5 text-left"
@@ -99,7 +103,7 @@ export function EthicsSection() {
                   >
                     <div className="flex items-center gap-3">
                       <Icon className="h-6 w-6 text-amber" strokeWidth={2.5} />
-                      <span className="font-heading text-base font-bold text-white lg:text-lg">
+                      <span className="font-heading text-base font-bold text-cream lg:text-lg">
                         {part.title}
                       </span>
                     </div>
@@ -124,13 +128,13 @@ export function EthicsSection() {
                         showCaption={false}
                         delay={0}
                       />
-                      <div className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
+                      <div className="text-base leading-relaxed text-cream/85 lg:text-lg" style={{ lineHeight: 1.7 }}>
                         {"content" in part && part.content}
                         {"items" in part && (
                           <ul className="mt-2 space-y-2.5">
                             {part.items?.map((item) => (
                               <li key={item} className="flex items-start gap-2.5">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_8px_rgba(245,197,24,0.9)]" />
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-amber shadow-[0_0 6px_rgba(212,168,75,0.6)]" />
                                 {item}
                               </li>
                             ))}
@@ -156,30 +160,27 @@ export function EthicsSection() {
 
             const containerProps = mounted
               ? {
-                  initial: { opacity: 0, y: 40, scale: 0.96 },
+                  initial: { opacity: 0, y: 30, scale: 0.98 },
                   whileInView: { opacity: 1, y: 0, scale: 1 },
                   viewport: { once: true, margin: "-60px" },
                   transition: { duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] as const },
-                  whileHover: { y: -8, scale: 1.02 },
+                  whileHover: { y: -4 },
                 }
               : {};
 
             const iconProps = mounted
-              ? { whileHover: { rotate: 12, scale: 1.1 } }
+              ? { whileHover: { scale: 1.1 } }
               : {};
 
             return (
               <Container
                 key={part.id}
                 {...containerProps}
-                className="group relative h-full overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark backdrop-blur-md"
+                className="group relative h-full overflow-hidden rounded-lg border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
-                <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2))",
-                    filter: "blur(8px)",
-                  }}
-                />
+                {/* Traditional corner accents */}
+                <div className="pointer-events-none absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
 
                 <IllustrationCard
                   title={illustration.title}
@@ -195,23 +196,23 @@ export function EthicsSection() {
                 <div className="p-6">
                   <IconContainer
                     {...iconProps}
-                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-amber/30 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0_16px_rgba(245,197,24,0.15)]"
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-amber/30 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0 12px_rgba(212,168,75,0.12)]"
                   >
                     <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
                   </IconContainer>
-                  <h3 className="mb-3 font-heading text-xl font-bold text-white lg:text-2xl">
+                  <h3 className="mb-3 font-heading text-xl font-bold text-cream lg:text-2xl">
                     {part.title}
                   </h3>
                   {"content" in part && (
-                    <p className="text-base leading-relaxed text-ivory lg:text-lg" style={{ lineHeight: 1.7 }}>
+                    <p className="text-base leading-relaxed text-cream/85 lg:text-lg" style={{ lineHeight: 1.7 }}>
                       {part.content}
                     </p>
                   )}
                   {"items" in part && (
-                    <ul className="mt-3 space-y-2.5 text-base text-ivory">
+                    <ul className="mt-3 space-y-2.5 text-base text-cream/85">
                       {part.items?.map((item) => (
                         <li key={item} className="flex items-start gap-2.5">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber shadow-[0_0_8px_rgba(245,197,24,0.9)]" />
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-amber shadow-[0_0 6px_rgba(212,168,75,0.6)]" />
                           {item}
                         </li>
                       ))}

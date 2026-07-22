@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
-      <body className="bg-[#0a0e1a] text-cream">{children}</body>
+      <body className="bg-[#1a1410] text-cream">{children}</body>
     </html>
   );
 }

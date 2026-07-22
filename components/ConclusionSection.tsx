@@ -23,22 +23,22 @@ export function ConclusionSection() {
 
   const pulseProps = mounted
     ? {
-        animate: { scale: [1, 1.05, 1] },
-        transition: { duration: 3, repeat: Infinity },
+        animate: { scale: [1, 1.03, 1] },
+        transition: { duration: 4, repeat: Infinity },
       }
     : {};
 
   const buttonProps = mounted
     ? {
-        whileHover: { scale: 1.05 },
-        whileTap: { scale: 0.95 },
+        whileHover: { scale: 1.02 },
+        whileTap: { scale: 0.98 },
       }
     : {};
 
   return (
     <section id="ket-luan" className="relative z-10 px-6 py-20 lg:py-28">
-      {/* Decorative gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-amber/[0.04] to-crimson/[0.06]" aria-hidden />
+      {/* Traditional decorative top border */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-crimson/[0.03] to-transparent" aria-hidden />
 
       <div className="relative mx-auto max-w-6xl">
         <SectionTitle badge="Kết luận" title="Kết luận" align="center" />
@@ -58,14 +58,15 @@ export function ConclusionSection() {
         </MotionSection>
 
         <MotionSection delay={0.1}>
-          <div className="group relative overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-12">
-            <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              style={{
-                background: "linear-gradient(135deg, rgba(245,197,24,0.3), rgba(220,38,38,0.2))",
-                filter: "blur(8px)",
-              }}
-            />
-            <div className="relative space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
+          <div className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark p-8 backdrop-blur-md lg:p-12">
+            {/* Traditional corner accents */}
+            <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+            <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+
+            {/* Top decorative line */}
+            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-amber/20 to-transparent" />
+
+            <div className="relative space-y-5 text-lg leading-relaxed text-cream/90 lg:text-xl" style={{ lineHeight: 1.85 }}>
               {conclusionContent.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -73,35 +74,47 @@ export function ConclusionSection() {
           </div>
         </MotionSection>
 
+        {/* Highlight quote */}
         <MotionSection delay={0.2} className="mt-12 text-center">
           <div className="relative inline-block">
             <PulseGlow
               {...pulseProps}
-              className="absolute -inset-6 rounded-3xl bg-gradient-to-r from-amber/20 via-crimson/15 to-amber/20 blur-2xl"
+              className="absolute -inset-8 rounded-2xl bg-gradient-to-r from-crimson/10 via-amber/10 to-crimson/10 blur-xl"
               aria-hidden
             />
-            <Sparkles className="absolute -left-12 -top-2 h-8 w-8 text-amber opacity-50" />
-            <Sparkles className="absolute -right-12 -top-2 h-8 w-8 text-amber opacity-50" />
-            <p className="relative font-heading text-3xl font-bold text-amber sm:text-4xl lg:text-5xl xl:text-6xl" style={{ wordSpacing: "0.06em", letterSpacing: "0.005em", textShadow: "0 4px 24px rgba(245,197,24,0.5), 0 2px 8px rgba(0,0,0,0.5)" }}>
+            
+            {/* Traditional ornaments */}
+            <span className="absolute -left-16 -top-1 text-amber/40 text-3xl">☙</span>
+            <span className="absolute -right-16 -top-1 text-amber/40 text-3xl">❧</span>
+            
+            <p className="relative font-heading text-3xl font-bold text-amber sm:text-4xl lg:text-5xl xl:text-6xl" style={{ wordSpacing: "0.04em", letterSpacing: "0.02em", textShadow: "0 3px 16px rgba(212,168,75,0.4), 0 2px 6px rgba(0,0,0,0.4)" }}>
               &ldquo;{conclusionContent.highlight}&rdquo;
             </p>
           </div>
         </MotionSection>
 
+        {/* Back to top button */}
         <MotionSection delay={0.3} className="mt-12 flex justify-center">
           <TopButton
             type="button"
             onClick={scrollToTop}
             {...buttonProps}
-            className="group/btn inline-flex items-center gap-2.5 rounded-full border-2 border-amber bg-[#161e35]/70 px-10 py-3.5 text-base font-bold text-amber backdrop-blur-md transition-all hover:bg-gradient-to-r hover:from-crimson hover:via-burgundy hover:to-crimson hover:text-white hover:shadow-[0_8px_32px_rgba(245,197,24,0.4)]"
+            className="group/btn inline-flex items-center gap-2.5 rounded-lg border-2 border-amber/40 bg-[rgba(45,31,26,0.8)] px-10 py-3.5 text-base font-bold text-amber backdrop-blur-md transition-all hover:border-amber hover:bg-gradient-to-r hover:from-crimson/80 hover:to-burgundy/80 hover:text-cream hover:shadow-[0_4px 24px_rgba(212,168,75,0.3)]"
           >
             <ArrowUp className="h-5 w-5 transition-transform group-hover/btn:-translate-y-0.5" />
             {conclusionContent.backToTop}
           </TopButton>
         </MotionSection>
 
-        <footer className="mt-16 border-t border-amber/15 pt-8 text-center text-sm text-ivory/80 lg:text-base">
-          <p className="font-bold text-amber" style={{ textShadow: "0 1px 6px rgba(245,197,24,0.3)" }}>
+        {/* Traditional footer divider */}
+        <div className="mt-16 flex items-center gap-4">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber/20 to-transparent" />
+          <span className="text-amber/50 text-xl">☙ ❧</span>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber/20 to-transparent" />
+        </div>
+
+        <footer className="mt-8 text-center text-sm text-cream/70 lg:text-base">
+          <p className="font-bold text-amber/80" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.3)" }}>
             Chương 3 — Lịch sử Đảng Cộng sản Việt Nam · Môn học: VNR202
           </p>
           <p className="mt-1">Giáo trình Lịch sử Đảng Cộng sản Việt Nam · Bộ GD&ĐT</p>

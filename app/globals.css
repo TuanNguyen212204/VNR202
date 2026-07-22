@@ -2,23 +2,38 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Modern Fusion Palette - Lịch sử Đảng */
-  --color-ink: #0a0e1a;
-  --color-deep: #0f1729;
-  --color-night: #161e35;
-  --color-cream: #f5ebd6;
-  --color-ivory: #faf6ec;
-  --color-red: #dc2626;
-  --color-crimson: #b91c2c;
-  --color-burgundy: #7b1e2e;
-  --color-gold: #f5c518;
-  --color-amber: #fbbf24;
-  --color-brown: #1a1207;
-  --color-jade: #10b981;
-  --color-cyan: #06b6d4;
-  --color-aurora: #8b5cf6;
-  --color-rose: #f43f5e;
+  /* === TRADITIONAL VIETNAM PALETTE - Lịch sử Đảng === */
+  /* Base colors - Warm, paper-like */
+  --color-ink: #1a1410;
+  --color-deep: #2d1f1a;
+  --color-night: #3d2a1f;
+  
+  /* Cream/Paper tones */
+  --color-cream: #faf3e3;
+  --color-ivory: #fffef5;
+  --color-paper: #f5ebe0;
+  
+  /* Red - Traditional Vietnamese flag red */
+  --color-red: #C8102E;
+  --color-crimson: #9b1c2a;
+  --color-burgundy: #6b1520;
+  
+  /* Gold - Royal/traditional gold */
+  --color-gold: #D4A84B;
+  --color-amber: #E8C068;
+  --color-dark-gold: #8B6914;
+  
+  /* Brown for contrast */
+  --color-brown: #3d2314;
+  --color-warm-brown: #5c3d2e;
+  
+  /* Accent colors - muted */
+  --color-jade: #4a7c59;
+  --color-cyan: #5a8a8a;
+  --color-aurora: #8a6a7a;
+  --color-rose: #9a5a6a;
 
+  /* Typography */
   --font-heading: var(--font-cormorant), "Times New Roman", Georgia, serif;
   --font-body: var(--font-be-vietnam), system-ui, sans-serif;
 }
@@ -26,52 +41,58 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-size: 17px; /* Larger base font for TV presentation */
+    font-size: 17px;
   }
 
   @media (min-width: 1024px) {
     html {
-      font-size: 18px; /* Even larger on desktop/TV */
+      font-size: 18px;
     }
   }
 
   body {
-    @apply bg-[#0a0e1a] font-body text-cream antialiased;
+    @apply bg-[#1a1410] font-body text-cream antialiased;
+    /* Traditional paper texture with warm gradients */
     background-image:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(185, 28, 44, 0.22) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 50% at 80% 30%, rgba(245, 197, 24, 0.14) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 70% at 50% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 40% at 70% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 45%);
-    background-attachment: fixed;
-    line-height: 1.75; /* More spacing for readability */
+      /* Paper grain texture simulation */
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+      /* Warm gradient spots - subtle red and gold hints */
+      radial-gradient(ellipse 80% 60% at 15% 5%, rgba(200, 16, 46, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 85% 25%, rgba(212, 168, 75, 0.06) 0%, transparent 45%),
+      radial-gradient(ellipse 60% 40% at 50% 95%, rgba(200, 16, 46, 0.05) 0%, transparent 40%);
+    background-blend-mode: overlay, normal, normal, normal;
+    background-attachment: fixed, fixed, fixed, fixed;
+    line-height: 1.85;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    letter-spacing: 0.005em;
-    line-height: 1.15;
-    color: #ffffff; /* Pure white headings for max contrast */
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #fffef5;
   }
 
   ::selection {
-    background: rgba(245, 197, 24, 0.5);
-    color: #ffffff;
+    background: rgba(212, 168, 75, 0.4);
+    color: #1a1410;
   }
 
-  /* Custom scrollbar */
+  /* Traditional scrollbar - wood/brass style */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 41, 0.5);
+    background: linear-gradient(to bottom, #2d1f1a, #1a1410);
+    border-left: 1px solid rgba(212, 168, 75, 0.2);
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #b91c2c, #7b1e2e);
+    background: linear-gradient(to right, #8B6914, #D4A84B, #8B6914);
     border-radius: 6px;
+    border: 2px solid #2d1f1a;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #f5c518, #fbbf24);
+    background: linear-gradient(to right, #6B5010, #E8C068, #6B5010);
   }
 
   main p,
@@ -79,7 +100,7 @@
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
-    line-height: 1.75;
+    line-height: 1.85;
   }
 
   section[id] {
@@ -88,25 +109,11 @@
 }
 
 @layer utilities {
-  /* === TEXT EFFECTS === */
+  /* === TRADITIONAL VIETNAM TEXT EFFECTS === */
+  
+  /* Gold gradient - royal manuscript style */
   .text-gradient-gold {
-    background: linear-gradient(135deg, #f5c518 0%, #fff5b8 30%, #fbbf24 60%, #f5c518 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-shift 6s ease-in-out infinite;
-  }
-
-  .text-gradient-crimson {
-    background: linear-gradient(135deg, #dc2626 0%, #f43f5e 50%, #b91c2c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .text-gradient-aurora {
-    background: linear-gradient(135deg, #f43f5e 0%, #fbbf24 30%, #10b981 60%, #06b6d4 100%);
+    background: linear-gradient(135deg, #D4A84B 0%, #E8C068 30%, #D4A84B 50%, #8B6914 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -114,75 +121,140 @@
     animation: gradient-shift 8s ease-in-out infinite;
   }
 
+  /* Red gradient - flag/fabric style */
+  .text-gradient-crimson {
+    background: linear-gradient(135deg, #C8102E 0%, #9b1c2a 50%, #C8102E 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Mixed red-gold gradient */
+  .text-gradient-aurora {
+    background: linear-gradient(135deg, #C8102E 0%, #D4A84B 40%, #E8C068 60%, #C8102E 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 10s ease-in-out infinite;
+  }
+
+  /* Text glow - candle/parchment glow */
   .text-glow-gold {
     text-shadow:
-      0 0 24px rgba(245, 197, 24, 0.4),
-      0 0 48px rgba(245, 197, 24, 0.2);
+      0 0 20px rgba(212, 168, 75, 0.5),
+      0 0 40px rgba(212, 168, 75, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .text-glow-crimson {
     text-shadow:
-      0 0 24px rgba(220, 38, 38, 0.4),
-      0 0 48px rgba(244, 63, 94, 0.2);
+      0 0 20px rgba(200, 16, 46, 0.5),
+      0 0 40px rgba(155, 28, 42, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
-  /* === BACKGROUND EFFECTS === */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(245, 197, 24, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245, 197, 24, 0.04) 1px, transparent 1px);
+  /* === TRADITIONAL BACKGROUND PATTERNS === */
+  
+  /* Vietnamese dragon scale pattern */
+  .bg-pattern-dragon-scale {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 15 L45 15 L37 22 L40 32 L30 26 L20 32 L23 22 L15 15 L25 15 Z' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
     background-size: 60px 60px;
   }
 
-  .bg-grid-dense {
+  /* Traditional cloud pattern (mây tre) */
+  .bg-pattern-clouds {
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 20 Q15 10 25 15 Q30 5 40 12 Q50 5 55 15 Q65 10 70 20 Q65 30 55 25 Q50 35 40 28 Q30 35 25 25 Q15 30 10 20 Z' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E");
+    background-size: 80px 40px;
+  }
+
+  /* Traditional wave pattern */
+  .bg-pattern-wave {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q12.5 0 25 10 T50 10 T75 10 T100 10' fill='none' stroke='%23C8102E' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 100px 20px;
+  }
+
+  /* Lotus pattern */
+  .bg-pattern-lotus {
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='24' cy='28' rx='6' ry='10' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.08'/%3E%3Cellipse cx='16' cy='24' rx='4' ry='12' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.06' transform='rotate(-20 16 24)'/%3E%3Cellipse cx='32' cy='24' rx='4' ry='12' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.06' transform='rotate(20 32 24)'/%3E%3Ccircle cx='24' cy='24' r='3' fill='none' stroke='%23D4A84B' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+    background-size: 48px 48px;
+  }
+
+  /* Cross pattern - traditional embroidery */
+  .bg-pattern-cross {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(212, 168, 75, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 168, 75, 0.04) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
-  .bg-dot-pattern {
-    background-image: radial-gradient(circle, rgba(245, 197, 24, 0.15) 1px, transparent 1.5px);
-    background-size: 28px 28px;
-  }
-
-  .bg-radial-spotlight {
-    background: radial-gradient(circle at center, rgba(245, 197, 24, 0.08) 0%, transparent 60%);
-  }
-
-  .bg-mesh {
-    background-color: #0a0e1a;
+  /* Traditional paper/parchment background */
+  .bg-parchment {
+    background-color: #1a1410;
     background-image:
-      radial-gradient(at 12% 18%, rgba(185, 28, 44, 0.35) 0px, transparent 50%),
-      radial-gradient(at 88% 12%, rgba(245, 197, 24, 0.18) 0px, transparent 50%),
-      radial-gradient(at 70% 88%, rgba(16, 185, 129, 0.18) 0px, transparent 50%),
-      radial-gradient(at 25% 75%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+      radial-gradient(ellipse at 10% 10%, rgba(200, 16, 46, 0.04) 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 20%, rgba(212, 168, 75, 0.05) 0%, transparent 35%),
+      radial-gradient(ellipse at 50% 90%, rgba(200, 16, 46, 0.03) 0%, transparent 45%);
   }
 
+  /* Warm paper overlay */
+  .bg-paper-warm {
+    background: linear-gradient(135deg, rgba(92, 61, 46, 0.3) 0%, rgba(26, 20, 16, 0.9) 100%);
+  }
+
+  /* Dot pattern - traditional printing */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, rgba(212, 168, 75, 0.12) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  /* Radial spotlight - warm lamp */
+  .bg-radial-spotlight {
+    background: radial-gradient(circle at center, rgba(232, 192, 104, 0.08) 0%, transparent 60%);
+  }
+
+  /* Traditional dark card - wood panel feel */
   .bg-dark-card {
-    background: linear-gradient(135deg, rgba(22, 30, 53, 0.85) 0%, rgba(15, 23, 41, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(61, 42, 31, 0.9) 0%, rgba(26, 20, 16, 0.95) 100%);
+    border: 1px solid rgba(212, 168, 75, 0.15);
   }
 
+  /* Section gradient - subtle red and gold hints */
   .bg-dark-section {
-    background: linear-gradient(180deg, #0f1729 0%, #0a0e1a 50%, #0f1729 100%);
+    background: linear-gradient(180deg, #2d1f1a 0%, #1a1410 50%, #2d1f1a 100%);
   }
 
+  /* Glass effect - traditional window */
   .bg-glass-dark {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(92, 61, 46, 0.4) 0%, rgba(26, 20, 16, 0.7) 100%);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(212, 168, 75, 0.12);
   }
 
   .bg-glass-light {
-    background: linear-gradient(135deg, rgba(250, 246, 236, 0.08) 0%, rgba(250, 246, 236, 0.02) 100%);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(245, 197, 24, 0.18);
+    background: linear-gradient(135deg, rgba(250, 243, 227, 0.06) 0%, rgba(250, 243, 227, 0.02) 100%);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(212, 168, 75, 0.15);
   }
 
-  /* === BORDER EFFECTS === */
+  /* === TRADITIONAL BORDER EFFECTS === */
+  
+  /* Double border - traditional frame */
+  .border-traditional {
+    border: 2px solid rgba(212, 168, 75, 0.3);
+    position: relative;
+  }
+  .border-traditional::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(212, 168, 75, 0.2);
+    pointer-events: none;
+  }
+
+  /* Gold gradient border */
   .border-gradient {
     border: 1px solid transparent;
     background-clip: padding-box;
@@ -194,29 +266,73 @@
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(245, 197, 24, 0.4), rgba(185, 28, 44, 0.3), rgba(16, 185, 129, 0.3));
+    background: linear-gradient(135deg, #D4A84B, #8B6914, #C8102E);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    opacity: 0.6;
   }
 
+  /* Red and gold double line - traditional Vietnamese */
+  .border-red-gold {
+    border-top: 3px solid #C8102E;
+    position: relative;
+  }
+  .border-red-gold::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4A84B, transparent);
+  }
+
+  /* Traditional corner ornaments */
+  .corner-ornaments::before,
+  .corner-ornaments::after {
+    content: '❧';
+    position: absolute;
+    font-size: 24px;
+    color: rgba(212, 168, 75, 0.4);
+  }
+  .corner-ornaments::before {
+    top: 8px;
+    left: 8px;
+  }
+  .corner-ornaments::after {
+    bottom: 8px;
+    right: 8px;
+    transform: rotate(180deg);
+  }
+
+  /* === GLOW EFFECTS === */
+  
+  /* Gold glow - warm lamp light */
   .glow-gold {
     box-shadow:
-      0 0 24px rgba(245, 197, 24, 0.15),
-      0 8px 32px rgba(245, 197, 24, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 0 20px rgba(212, 168, 75, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 254, 245, 0.05);
   }
 
+  /* Red glow - subtle warmth */
   .glow-crimson {
     box-shadow:
-      0 0 32px rgba(220, 38, 38, 0.18),
-      0 12px 40px rgba(185, 28, 44, 0.15);
+      0 0 24px rgba(200, 16, 46, 0.15),
+      0 12px 40px rgba(0, 0, 0, 0.4);
   }
 
-  /* === ANIMATIONS === */
+  /* Inner gold border glow */
+  .glow-inner-gold {
+    box-shadow: inset 0 0 20px rgba(212, 168, 75, 0.1);
+  }
+
+  /* === ANIMATIONS - Slower, more dignified === */
+  
   @keyframes gradient-shift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -224,19 +340,21 @@
 
   @keyframes float-slow {
     0%, 100% { transform: translateY(0) translateX(0); }
-    25% { transform: translateY(-30px) translateX(15px); }
-    50% { transform: translateY(-15px) translateX(-10px); }
-    75% { transform: translateY(-25px) translateX(20px); }
+    25% { transform: translateY(-15px) translateX(8px); }
+    50% { transform: translateY(-8px) translateX(-5px); }
+    75% { transform: translateY(-12px) translateX(10px); }
   }
 
-  @keyframes float-sphere {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
-    50% { transform: translateY(-40px) scale(1.05); opacity: 0.9; }
+  @keyframes candle-flicker {
+    0%, 100% { opacity: 0.7; }
+    25% { opacity: 0.85; }
+    50% { opacity: 0.75; }
+    75% { opacity: 0.9; }
   }
 
   @keyframes pulse-ring {
-    0% { transform: scale(0.8); opacity: 0.8; }
-    100% { transform: scale(2.2); opacity: 0; }
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(2); opacity: 0; }
   }
 
   @keyframes shimmer {
@@ -254,9 +372,10 @@
     to { transform: rotate(360deg) translateX(var(--orbit-r, 80px)) rotate(-360deg); }
   }
 
-  @keyframes shine-sweep {
-    0% { transform: translateX(-150%) skewX(-20deg); }
-    100% { transform: translateX(250%) skewX(-20deg); }
+  /* Gentle wave animation for decorative elements */
+  @keyframes gentle-wave {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(1deg); }
   }
 
   @keyframes grid-move {
@@ -269,75 +388,112 @@
     100% { transform: translateX(-50%); }
   }
 
-  @keyframes blob-aurora {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -30px) scale(1.1); }
-    66% { transform: translate(-30px, 20px) scale(0.95); }
+  /* Lotus breathing animation */
+  @keyframes lotus-breathe {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  /* Traditional falling petal animation */
+  @keyframes fall-petal {
+    0% {
+      transform: translateY(-100px) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(100vh) translateX(var(--sway, 30px)) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-fall-petal {
+    animation-name: fall-petal;
+  }
+
+  /* Star twinkle - subtle */
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.15); }
+  }
+
+  /* Candle flicker - subtle */
+  @keyframes candle-flicker {
+    0%, 100% { opacity: 0.6; }
+    33% { opacity: 0.8; }
+    66% { opacity: 0.7; }
   }
 
   .animate-float-slow {
-    animation: float-slow 12s ease-in-out infinite;
-  }
-
-  .animate-float-sphere {
-    animation: float-sphere 8s ease-in-out infinite;
+    animation: float-slow 15s ease-in-out infinite;
   }
 
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.3), transparent);
     background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
+    animation: shimmer 4s linear infinite;
   }
 
   .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
+    animation: spin-slow 30s linear infinite;
   }
 
   .animate-orbit {
-    animation: orbit var(--orbit-d, 12s) linear infinite;
+    animation: orbit var(--orbit-d, 18s) linear infinite;
   }
 
   .animate-grid-move {
-    animation: grid-move 20s linear infinite;
-  }
-
-  .animate-blob-aurora {
-    animation: blob-aurora 18s ease-in-out infinite;
+    animation: grid-move 30s linear infinite;
   }
 
   .animate-shine-sweep {
-    animation: shine-sweep 4s ease-in-out infinite;
+    animation: shine-sweep 6s ease-in-out infinite;
+  }
+
+  .animate-lotus-breathe {
+    animation: lotus-breathe 6s ease-in-out infinite;
+  }
+
+  .animate-star-twinkle {
+    animation: star-twinkle 4s ease-in-out infinite;
   }
 
   /* === CARD EFFECTS === */
+  
   .card-3d {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform-style: preserve-3d;
     will-change: transform;
   }
   .card-3d:hover {
-    transform: translateY(-8px) scale(1.015);
+    transform: translateY(-4px) scale(1.01);
   }
 
+  /* Traditional card with wood texture feel */
   .glass-card-dark {
-    background: linear-gradient(135deg, rgba(22, 30, 53, 0.92) 0%, rgba(10, 14, 26, 0.94) 100%);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgba(245, 197, 24, 0.2);
+    background: linear-gradient(135deg, rgba(61, 42, 31, 0.95) 0%, rgba(26, 20, 16, 0.98) 100%);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(212, 168, 75, 0.18);
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      inset 0 1px 0 rgba(255, 254, 245, 0.03);
   }
 
   .glass-card-dark:hover {
-    border-color: rgba(245, 197, 24, 0.4);
+    border-color: rgba(212, 168, 75, 0.35);
     box-shadow:
       0 16px 48px rgba(0, 0, 0, 0.6),
-      0 0 32px rgba(245, 197, 24, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 0 24px rgba(212, 168, 75, 0.1),
+      inset 0 1px 0 rgba(255, 254, 245, 0.05);
   }
 
-  /* Section heading underline */
+  /* Section heading with traditional underline */
   .section-underline {
     position: relative;
   }
@@ -345,10 +501,10 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -12px;
-    width: 80px;
+    bottom: -16px;
+    width: 100px;
     height: 3px;
-    background: linear-gradient(90deg, #f5c518, #b91c2c, transparent);
+    background: linear-gradient(90deg, #C8102E, #D4A84B, transparent);
     border-radius: 2px;
   }
 
@@ -361,16 +517,16 @@
     transform-style: preserve-3d;
   }
 
-  /* Glow dot */
+  /* Glow dot - candle light */
   .glow-dot {
-    background: radial-gradient(circle, #f5c518 0%, transparent 70%);
+    background: radial-gradient(circle, #E8C068 0%, transparent 70%);
     filter: blur(1px);
   }
 
-  /* Aurora blob */
+  /* Warm aurora blob - fire light */
   .aurora-blob {
-    filter: blur(80px);
-    opacity: 0.4;
+    filter: blur(100px);
+    opacity: 0.3;
     will-change: transform;
   }
 
@@ -378,36 +534,32 @@
   .marquee-track {
     display: flex;
     width: max-content;
-    animation: ticker 40s linear infinite;
+    animation: ticker 50s linear infinite;
   }
 
-  /* Variant gradients */
-  .illustration-variant-hero {
-    background: linear-gradient(145deg, rgba(185, 28, 44, 0.3) 0%, rgba(15, 23, 41, 0.95) 50%, rgba(245, 197, 24, 0.18) 100%);
+  /* === TRADITIONAL DECORATIVE BORDERS === */
+  
+  /* Dragon scale pattern overlay */
+  .bg-dragon-scales {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(200, 16, 46, 0.05) 0%, transparent 25%),
+      radial-gradient(circle at 80% 50%, rgba(212, 168, 75, 0.05) 0%, transparent 25%),
+      url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 2 L24 12 L34 12 L26 18 L29 28 L20 22 L11 28 L14 18 L6 12 L16 12 Z' fill='none' stroke='%23D4A84B' stroke-width='0.3' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: 100% 100%, 100% 100%, 40px 40px;
   }
 
-  .illustration-variant-intro {
-    background: linear-gradient(160deg, rgba(15, 23, 41, 0.95) 0%, rgba(245, 197, 24, 0.15) 50%, rgba(16, 185, 129, 0.15) 100%);
+  /* Traditional wave divider */
+  .bg-wave-divider {
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' viewBox='0 0 200 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10 T150 10 T200 10' fill='none' stroke='%23D4A84B' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M0 15 Q25 5 50 15 T100 15 T150 15 T200 15' fill='none' stroke='%23C8102E' stroke-width='0.5' opacity='0.15'/%3E%3C/svg%3E");
+    background-size: 200px 20px;
+    background-repeat: repeat-x;
   }
 
-  .illustration-variant-human {
-    background: linear-gradient(135deg, rgba(185, 28, 44, 0.2) 0%, rgba(15, 23, 41, 0.95) 50%, rgba(245, 197, 24, 0.15) 100%);
-  }
-
-  .illustration-variant-culture {
-    background: linear-gradient(180deg, rgba(245, 197, 24, 0.15) 0%, rgba(15, 23, 41, 0.95) 45%, rgba(16, 185, 129, 0.18) 100%);
-  }
-
-  .illustration-variant-ethics {
-    background: linear-gradient(145deg, rgba(185, 28, 44, 0.2) 0%, rgba(15, 23, 41, 0.95) 50%, rgba(245, 197, 24, 0.2) 100%);
-  }
-
-  .illustration-variant-practice {
-    background: linear-gradient(160deg, rgba(15, 23, 41, 0.95) 0%, rgba(16, 185, 129, 0.18) 60%, rgba(245, 197, 24, 0.15) 100%);
-  }
-
-  .illustration-variant-conclusion {
-    background: linear-gradient(180deg, rgba(245, 197, 24, 0.2) 0%, rgba(15, 23, 41, 0.95) 40%, rgba(185, 28, 44, 0.18) 100%);
+  /* Corner pattern - traditional Vietnamese woodcarving */
+  .corner-pattern {
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(212, 168, 75, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(200, 16, 46, 0.05) 0%, transparent 50%);
   }
 }
 

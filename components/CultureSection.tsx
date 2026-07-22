@@ -38,7 +38,7 @@ export function CultureSection() {
 
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <MotionSection>
-            <div className="space-y-5 text-lg leading-relaxed text-ivory lg:text-xl" style={{ lineHeight: 1.75 }}>
+            <div className="space-y-5 text-lg leading-relaxed text-cream/90 lg:text-xl" style={{ lineHeight: 1.85 }}>
               {cultureContent.mainParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -75,7 +75,7 @@ export function CultureSection() {
                   whileInView: { opacity: 1, y: 0, scale: 1 },
                   viewport: { once: true, margin: "-60px" },
                   transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as const },
-                  whileHover: { y: -6, scale: 1.01 },
+                  whileHover: { y: -4 },
                 }
               : {};
 
@@ -87,15 +87,11 @@ export function CultureSection() {
               <Container
                 key={block.id}
                 {...containerProps}
-                className="group relative overflow-hidden rounded-2xl border border-amber/20 bg-glass-dark backdrop-blur-md"
+                className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
-                {/* Hover glow */}
-                <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(220,38,38,0.3), rgba(245,197,24,0.2))",
-                    filter: "blur(8px)",
-                  }}
-                />
+                {/* Traditional corner accents */}
+                <div className="pointer-events-none absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
 
                 <IllustrationCard
                   title={illustration.title}
@@ -111,19 +107,19 @@ export function CultureSection() {
                 <div className="flex items-start gap-3 p-5 pt-4">
                   <NumberBadge
                     {...badgeProps}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber/30 to-crimson/20 text-sm font-bold text-amber shadow-[0_0_12px_rgba(245,197,24,0.3)]"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber/40 bg-gradient-to-br from-amber/20 to-crimson/15 text-sm font-bold text-amber shadow-[0_0 8px_rgba(212,168,75,0.2)]"
                   >
                     {i + 1}
                   </NumberBadge>
                   <div className="min-w-0 flex-1 space-y-1.5">
                     <div className="flex items-start gap-2">
                       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-amber" strokeWidth={2} />
-                      <p className="text-base font-bold leading-snug text-white lg:text-lg">
+                      <p className="text-base font-bold leading-snug text-cream lg:text-lg">
                         {block.title}
                       </p>
                     </div>
                     {block.description && (
-                      <p className="text-sm leading-relaxed text-ivory lg:text-base" style={{ lineHeight: 1.7 }}>
+                      <p className="text-sm leading-relaxed text-cream/80 lg:text-base" style={{ lineHeight: 1.7 }}>
                         {block.description}
                       </p>
                     )}
