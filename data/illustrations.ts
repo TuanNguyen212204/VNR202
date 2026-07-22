@@ -216,7 +216,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   practice: {
     id: "practice",
-    imageSrc: undefined,
+    imageSrc: "/images/phong-chong-tham-nhung.svg",
     title: "Phòng, chống tham nhũng",
     description: "Tham nhũng là 'giặc nội xâm' — đe dọa trực tiếp đến sự tồn vong của Đảng và chế độ.",
     prompt:
