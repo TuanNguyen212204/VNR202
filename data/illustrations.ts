@@ -128,7 +128,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "culture-holistic": {
     id: "culture-holistic",
-    imageSrc: undefined,
+    imageSrc: "/images/vnr1.jpg",
     title: "Kinh tế chưa bền vững",
     description: "Tăng trưởng chưa tương xứng với tiềm năng, năng suất lao động và năng lực cạnh tranh còn thấp.",
     prompt:
@@ -139,7 +139,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "culture-environment": {
     id: "culture-environment",
-    imageSrc: undefined,
+    imageSrc: "/images/vnr2.jpg",
     title: "Vấn đề xã hội nảy sinh",
     description: "Một bộ phận nhân dân chưa được thụ hưởng công bằng thành quả đổi mới.",
     prompt:
@@ -150,7 +150,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "culture-political": {
     id: "culture-political",
-    imageSrc: undefined,
+    imageSrc: "/images/vnr3.jpg",
     title: "Bốn nguy cơ vẫn hiện hữu",
     description: "Diễn biến hòa bình, tự diễn biến, tự chuyển hóa trong nội bộ vẫn tồn tại và diễn biến phức tạp.",
     prompt:
@@ -161,7 +161,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   "culture-integration": {
     id: "culture-integration",
-    imageSrc: undefined,
+    imageSrc: "/images/vnr4.png",
     title: "Nguyên nhân khách quan và chủ quan",
     description: "Tính chất phức tạp chưa có tiền lệ của đổi mới và yếu kém trong công tác lãnh đạo, quản lý.",
     prompt:
