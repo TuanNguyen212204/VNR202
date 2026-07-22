@@ -62,58 +62,68 @@ export const illustrations: Record<string, IllustrationMeta> = {
   },
   intro: {
     id: "intro",
-    imageSrc: undefined,
-    title: "Không gian thuyết trình",
-    description: "Sinh viên thuyết trình trong không gian học thuật trang trọng.",
+    imageSrc: "/images/mo-dau-doi-moi.jpg",
+    title: "Thành tựu đổi mới",
+    description:
+      "Đường chân trời TP. Hồ Chí Minh — biểu tượng thành tựu to lớn, có ý nghĩa lịch sử sau hơn 30 năm đổi mới.",
     prompt:
-      "Vietnamese university students giving a respectful classroom presentation, warm golden light, open book and microphone on podium, elegant academic atmosphere, burgundy and cream color palette, soft realistic illustration style, no text, no watermark.",
+      "Real photo: Ho Chi Minh City skyline at sunset across the Saigon River, Bitexco Financial Tower visible, warm golden light, modern Vietnam urban development.",
     variant: "intro",
     icon: "Mic2",
     section: "intro",
+    objectPosition: "center",
   },
   "human-concept": {
     id: "human-concept",
-    imageSrc: undefined,
+    imageSrc: "/images/thanh-tuu-kinh-te.jpg",
     title: "Thành tựu kinh tế",
-    description: "Tăng trưởng GDP, hội nhập quốc tế, hoàn thiện thể chế kinh tế thị trường định hướng XHCN.",
+    description:
+      "Tòa tháp Bitexco, TP. Hồ Chí Minh — hình ảnh tăng trưởng, đô thị hóa và hội nhập kinh tế quốc tế.",
     prompt:
-      "Vietnamese economic achievement illustration, upward growth chart, modern skyline, ports and logistics, golden light, burgundy and cream palette, elegant educational style, no text.",
+      "Real photo: Bitexco Financial Tower at dusk on the Saigon River waterfront, modern skyscrapers, Vietnam economic growth.",
     variant: "human",
     icon: "TrendingUp",
     section: "human",
+    objectPosition: "center top",
   },
   "human-goal": {
     id: "human-goal",
-    imageSrc: undefined,
+    imageSrc: "/images/thanh-tuu-van-hoa-xa-hoi.jpg",
     title: "Văn hóa - xã hội chuyển biến tích cực",
-    description: "Đời sống tinh thần phong phú, xóa đói giảm nghèo, nâng cao dân trí.",
+    description:
+      "Ruộng bậc thang Mù Cang Chải — đời sống nông thôn, nông nghiệp và chuyển biến xã hội tích cực.",
     prompt:
-      "Warm illustration of Vietnamese community life, cultural festivals, families, education, social welfare, soft golden light, respectful tone, no text.",
+      "Real photo: terraced rice fields in Mu Cang Chai, Yen Bai, Vietnam, misty mountains, rural livelihood and countryside development.",
     variant: "human",
     icon: "Heart",
     section: "human",
+    objectPosition: "center",
   },
   "human-motive": {
     id: "human-motive",
-    imageSrc: undefined,
+    imageSrc: "/images/thanh-tuu-quoc-phong-doi-ngoai.jpg",
     title: "Quốc phòng, an ninh, đối ngoại",
-    description: "Giữ vững độc lập chủ quyền, hội nhập quốc tế, nâng cao vị thế đất nước.",
+    description:
+      "Cột cờ Hà Nội với Quốc kỳ — biểu tượng độc lập, chủ quyền và vị thế quốc gia.",
     prompt:
-      "Vietnamese national defense and diplomacy illustration, flag, handshake, dove of peace, golden light, burgundy gold palette, no text.",
+      "Real photo: Flag Tower of Hanoi with Vietnamese national flag against dramatic clouds, sovereignty and national defense symbolism.",
     variant: "human",
     icon: "ShieldCheck",
     section: "human",
+    objectPosition: "center top",
   },
   "human-strategy": {
     id: "human-strategy",
-    imageSrc: undefined,
+    imageSrc: "/images/thanh-tuu-xay-dung-dang.jpg",
     title: "Xây dựng Đảng và Nhà nước pháp quyền",
-    description: "Dân chủ XHCN, Nhà nước pháp quyền, vai trò lãnh đạo của Đảng ngày càng vững mạnh.",
+    description:
+      "Nhà Quốc hội Việt Nam (Hà Nội) — biểu tượng Nhà nước pháp quyền và xây dựng thể chế.",
     prompt:
-      "Symbolic illustration of party building and rule of law, classical building columns, scales of justice, lotus and golden light, no text.",
+      "Real photo: National Assembly Building of Vietnam in Hanoi with national flag and formal gardens.",
     variant: "human",
     icon: "Landmark",
     section: "human",
+    objectPosition: "center",
   },
   culture: {
     id: "culture",
