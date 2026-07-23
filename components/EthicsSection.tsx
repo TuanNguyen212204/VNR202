@@ -26,7 +26,7 @@ export function EthicsSection() {
     <section id="kinh-nghiem" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần III.3"
+          badge="3"
           title="Kinh nghiệm của Đảng"
           subtitle="Những bài học quý báu qua hơn 30 năm đổi mới"
         />

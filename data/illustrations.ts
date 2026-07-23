@@ -245,7 +245,7 @@ export const illustrations: Record<string, IllustrationMeta> = {
     prompt:
       "Hopeful Vietnamese conclusion illustration, sunrise light over subtle Vietnam map outline, blooming lotus, open book, golden particles, elegant burgundy and cream presentation design, inspiring and respectful, no text, no watermark.",
     variant: "conclusion",
-    icon: "Sparkles",
+    icon: "BookOpen",
     section: "conclusion",
     objectFit: "contain",
     objectPosition: "center",

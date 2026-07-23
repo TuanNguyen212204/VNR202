@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Heart,
   Landmark,
@@ -8,10 +8,15 @@ import {
   TrendingUp,
   type LucideIcon,
 } from "lucide-react";
-import { humanThoughtCards } from "@/lib/presentation-content";
+import {
+  achievementsClosing,
+  humanThoughtCards,
+} from "@/lib/presentation-content";
+import { HighlightedText } from "@/lib/highlight-figures";
 import { getIllustration, humanIllustrationIds } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { IllustrationCard } from "@/components/ui/IllustrationCard";
+import { MotionSection } from "@/components/ui/MotionSection";
 import { useIsMounted } from "@/hooks/useIsMounted";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -23,16 +28,12 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function HumanThoughtSection() {
   const mounted = useIsMounted();
-  const reduced = useReducedMotion();
 
   return (
-    <section
-      id="thanh-tuu"
-      className="relative z-10 px-6 py-20 lg:py-28"
-    >
+    <section id="thanh-tuu" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần III.1"
+          badge="1"
           title="Thành tựu của công cuộc đổi mới"
           subtitle="Kinh tế, văn hóa - xã hội, quốc phòng - an ninh và xây dựng Đảng"
         />
@@ -50,14 +51,16 @@ export function HumanThoughtSection() {
                   initial: { opacity: 0, y: 30, scale: 0.98 },
                   whileInView: { opacity: 1, y: 0, scale: 1 },
                   viewport: { once: true, margin: "-60px" },
-                  transition: { duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
+                  transition: {
+                    duration: 0.7,
+                    delay: i * 0.1,
+                    ease: [0.16, 1, 0.3, 1] as const,
+                  },
                   whileHover: { y: -4 },
                 }
               : {};
 
-            const iconProps = mounted
-              ? { whileHover: { scale: 1.1 } }
-              : {};
+            const iconProps = mounted ? { whileHover: { scale: 1.1 } } : {};
 
             return (
               <Container
@@ -65,11 +68,9 @@ export function HumanThoughtSection() {
                 {...containerProps}
                 className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark backdrop-blur-md"
               >
-                {/* Traditional corner accents */}
                 <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/20 transition-colors group-hover:border-amber/40" />
                 <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/20 transition-colors group-hover:border-amber/40" />
 
-                {/* Illustration */}
                 <IllustrationCard
                   title={illustration.title}
                   description={illustration.description}
@@ -82,12 +83,11 @@ export function HumanThoughtSection() {
                   className="!rounded-none !border-0 !shadow-none"
                 />
 
-                {/* Content */}
                 <div className="relative p-6 lg:p-8">
                   <div className="mb-4 flex items-center gap-3">
                     <IconContainer
                       {...iconProps}
-                      className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber/40 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0 12px_rgba(212,168,75,0.15)]"
+                      className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber/40 bg-gradient-to-br from-amber/20 to-crimson/15 shadow-[0_0_12px_rgba(212,168,75,0.15)]"
                     >
                       <Icon className="h-6 w-6 text-amber" strokeWidth={1.5} />
                     </IconContainer>
@@ -95,9 +95,14 @@ export function HumanThoughtSection() {
                       {card.title}
                     </h3>
                   </div>
-                  <div className="space-y-3 text-base leading-relaxed text-cream/85 lg:text-lg" style={{ lineHeight: 1.8 }}>
+                  <div
+                    className="space-y-3 text-base leading-relaxed text-cream/85 lg:text-lg"
+                    style={{ lineHeight: 1.8 }}
+                  >
                     {card.paragraphs.map((p, j) => (
-                      <p key={j}>{p}</p>
+                      <p key={j}>
+                        <HighlightedText text={p} />
+                      </p>
                     ))}
                   </div>
                 </div>
@@ -105,6 +110,12 @@ export function HumanThoughtSection() {
             );
           })}
         </div>
+
+        <MotionSection delay={0.15} className="mt-12">
+          <blockquote className="relative mx-auto max-w-4xl border-l-4 border-amber/60 bg-gradient-to-r from-amber/10 to-transparent px-6 py-5 text-lg font-medium leading-relaxed text-cream/90 lg:text-xl">
+            {achievementsClosing}
+          </blockquote>
+        </MotionSection>
       </div>
     </section>
   );

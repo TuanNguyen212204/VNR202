@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { PresentationTimeline } from "@/components/PresentationTimeline";
 import { IntroSection } from "@/components/IntroSection";
+import { ContextSection } from "@/components/ContextSection";
 import { HumanThoughtSection } from "@/components/HumanThoughtSection";
 import { CultureSection } from "@/components/CultureSection";
 import { EthicsSection } from "@/components/EthicsSection";
@@ -20,6 +21,7 @@ export default function Home() {
         <HeroSection />
         <PresentationTimeline />
         <IntroSection />
+        <ContextSection />
         <HumanThoughtSection />
         <CultureSection />
         <EthicsSection />

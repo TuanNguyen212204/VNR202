@@ -31,7 +31,7 @@ export function CultureSection() {
     <section id="han-che" className="relative z-10 px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          badge="Phần III.2"
+          badge="2"
           title="Hạn chế và nguyên nhân"
           subtitle="Những yếu kém còn tồn tại và nguyên nhân khách quan, chủ quan"
         />

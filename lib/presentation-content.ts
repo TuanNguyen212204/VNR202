@@ -1,5 +1,6 @@
 export const navLinks = [
   { href: "#mo-dau", label: "Mở đầu", section: "mo-dau" },
+  { href: "#boi-canh", label: "Bối cảnh 1975", section: "boi-canh" },
   { href: "#thanh-tuu", label: "Thành tựu đổi mới", section: "thanh-tuu" },
   { href: "#han-che", label: "Hạn chế & nguyên nhân", section: "han-che" },
   { href: "#kinh-nghiem", label: "Kinh nghiệm", section: "kinh-nghiem" },
@@ -10,11 +11,24 @@ export const navLinks = [
 export const timelineContent = {
   badge: "Mục lục",
   title: "Cấu trúc bài thuyết trình",
-  subtitle: "Bài trình bày gồm 5 phần chính theo giáo trình Chương 3, mục III và IV",
+  subtitle: "Bài trình bày gồm bối cảnh sau 1975 và các phần chính theo giáo trình Chương 3, mục III và IV",
   items: [
     {
       id: 1,
-      badge: "Phần III.1",
+      badge: "Bối cảnh",
+      title: "Bối cảnh Việt Nam sau năm 1975",
+      description: "Khó khăn sau thống nhất và yêu cầu tất yếu của công cuộc đổi mới năm 1986.",
+      href: "#boi-canh",
+      subItems: [
+        "Hậu quả chiến tranh",
+        "Khó khăn bên ngoài",
+        "Hạn chế của cơ chế cũ",
+        "Yêu cầu đổi mới",
+      ],
+    },
+    {
+      id: 2,
+      badge: "1",
       title: "Thành tựu của công cuộc đổi mới",
       description: "Những kết quả nổi bật trên các lĩnh vực kinh tế, văn hóa - xã hội, quốc phòng - an ninh, đối ngoại và xây dựng Đảng.",
       href: "#thanh-tuu",
@@ -26,8 +40,8 @@ export const timelineContent = {
       ],
     },
     {
-      id: 2,
-      badge: "Phần III.2",
+      id: 3,
+      badge: "2",
       title: "Hạn chế và nguyên nhân",
       description: "Những vấn đề còn tồn tại của công cuộc đổi mới và nguyên nhân khách quan, chủ quan.",
       href: "#han-che",
@@ -39,8 +53,8 @@ export const timelineContent = {
       ],
     },
     {
-      id: 3,
-      badge: "Phần III.3",
+      id: 4,
+      badge: "3",
       title: "Kinh nghiệm của Đảng",
       description: "Năm bài học kinh nghiệm được đúc kết qua hơn 30 năm lãnh đạo công cuộc đổi mới.",
       href: "#kinh-nghiem",
@@ -53,8 +67,8 @@ export const timelineContent = {
       ],
     },
     {
-      id: 4,
-      badge: "Phần IV",
+      id: 5,
+      badge: "4",
       title: "Nguyên nhân và tác hại của tham nhũng",
       description: "Những nguyên nhân sâu xa dẫn đến tham nhũng và hậu quả nghiêm trọng đối với đất nước.",
       href: "#tham-nhung",
@@ -66,7 +80,7 @@ export const timelineContent = {
       ],
     },
     {
-      id: 5,
+      id: 6,
       badge: "Kết luận",
       title: "Kết luận",
       description: "Tổng kết thành tựu, kinh nghiệm đổi mới và vấn đề phòng, chống tham nhũng hiện nay.",
@@ -92,44 +106,98 @@ export const introContent = {
     "Đổi mới để phát triển, phòng chống tham nhũng để giữ vững niềm tin của nhân dân.",
 };
 
+export const contextContent = {
+  badge: "Bối cảnh",
+  title: "Bối cảnh Việt Nam sau năm 1975",
+  intro:
+    "Sau khi đất nước thống nhất, Việt Nam bước vào thời kỳ xây dựng và phát triển trong điều kiện vô cùng khó khăn.",
+  closing: "Đổi mới là yêu cầu tất yếu xuất phát từ thực tiễn phát triển của đất nước.",
+  items: [
+    {
+      id: "war-aftermath",
+      year: "1975",
+      title: "Hậu quả chiến tranh",
+      icon: "AlertTriangle" as const,
+      description:
+        "Cơ sở hạ tầng bị tàn phá, sản xuất đình trệ, hàng hóa thiếu thốn và đời sống nhân dân gặp nhiều khó khăn.",
+    },
+    {
+      id: "external",
+      year: "1975–1986",
+      title: "Khó khăn bên ngoài",
+      icon: "Globe2" as const,
+      description:
+        "Việt Nam phải bảo vệ biên giới, đồng thời đối mặt với tình trạng bao vây, cô lập và cấm vận kinh tế.",
+    },
+    {
+      id: "old-mechanism",
+      year: "774%",
+      title: "Hạn chế của cơ chế cũ",
+      icon: "Scale" as const,
+      description:
+        "Cơ chế tập trung, quan liêu, bao cấp làm giảm động lực sản xuất. Hàng hóa khan hiếm, ngân sách thâm hụt và lạm phát năm 1986 lên tới khoảng 774%.",
+    },
+    {
+      id: "doi-moi",
+      year: "1986",
+      title: "Yêu cầu đổi mới",
+      icon: "RefreshCw" as const,
+      description:
+        "Trước tình trạng khủng hoảng kinh tế – xã hội, Đại hội VI tháng 12/1986 đã đề ra đường lối đổi mới toàn diện.",
+    },
+  ],
+  process: {
+    title: "Quá trình đổi mới tư duy",
+    paragraphs: [
+      "Quá trình đổi mới tư duy diễn ra qua nhiều bước trong các năm 1979, 1985 và 1986. Đến Đại hội VI tháng 12 năm 1986, Đảng chính thức đề ra đường lối đổi mới toàn diện.",
+      "Đổi mới không thay đổi mục tiêu xây dựng chủ nghĩa xã hội, mà thay đổi tư duy, cơ chế quản lý và phương thức tổ chức thực hiện cho phù hợp với thực tiễn.",
+      "Từ đây, Việt Nam chuyển từ cơ chế tập trung, bao cấp sang kinh tế hàng hóa nhiều thành phần, sau này là kinh tế thị trường định hướng xã hội chủ nghĩa.",
+      "Sau hơn 30 năm thực hiện, công cuộc đổi mới đã đem lại những thành tựu to lớn, có ý nghĩa lịch sử.",
+    ],
+  },
+};
+
 export const humanThoughtCards = [
   {
     id: "economy",
-    title: "Thành tựu về kinh tế",
+    title: "Kinh tế",
     icon: "TrendingUp" as const,
     paragraphs: [
-      "Sau đổi mới, nền kinh tế Việt Nam liên tục tăng trưởng khá, kinh tế vĩ mô cơ bản ổn định, lạm phát được kiểm soát. Đất nước đã ra khỏi tình trạng kém phát triển, trở thành quốc gia đang phát triển có thu nhập trung bình, quy mô GDP tăng gấp nhiều lần so với trước đổi mới.",
-      "Thể chế kinh tế thị trường định hướng xã hội chủ nghĩa từng bước được hoàn thiện, các thành phần kinh tế phát triển đa dạng, hội nhập kinh tế quốc tế ngày càng sâu rộng, hạ tầng kỹ thuật, đô thị được đầu tư mạnh mẽ.",
+      "Việt Nam từng bước thoát khỏi khủng hoảng, duy trì tăng trưởng và hình thành nền kinh tế thị trường định hướng xã hội chủ nghĩa.",
+      "Năm 2018, GDP tăng 7,08%, thu nhập bình quân đầu người đạt hơn 2.500 USD.",
     ],
   },
   {
     id: "cultureSociety",
-    title: "Văn hóa - xã hội",
+    title: "Văn hóa và xã hội",
     icon: "Heart" as const,
     paragraphs: [
-      "Đời sống văn hóa, tinh thần của nhân dân có nhiều chuyển biến tích cực, dân trí được nâng cao, các phong trào xây dựng đời sống văn hóa, xây dựng nông thôn mới đạt nhiều kết quả.",
-      "Công tác xóa đói giảm nghèo đạt thành tựu được cộng đồng quốc tế ghi nhận, tỉ lệ hộ nghèo giảm mạnh qua từng giai đoạn, các chính sách an sinh xã hội, chăm sóc sức khỏe nhân dân ngày càng hoàn thiện.",
+      "Đời sống nhân dân, giáo dục, y tế và an sinh xã hội được cải thiện.",
+      "Tỷ lệ nghèo giảm từ khoảng 58% năm 1993 xuống khoảng 6% năm 2018.",
     ],
   },
   {
     id: "defenseForeign",
-    title: "Quốc phòng, an ninh, đối ngoại",
+    title: "Quốc phòng, an ninh và đối ngoại",
     icon: "ShieldCheck" as const,
     paragraphs: [
-      "Độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ được giữ vững; nhận thức về kết hợp phát triển kinh tế với củng cố quốc phòng, an ninh ngày càng đầy đủ và toàn diện hơn.",
-      "Hoạt động đối ngoại đạt nhiều thành tựu quan trọng, Việt Nam thiết lập quan hệ ngoại giao với hầu hết các quốc gia trên thế giới, chủ động và tích cực hội nhập quốc tế, nâng cao vị thế đất nước.",
+      "Độc lập, chủ quyền và ổn định chính trị được giữ vững.",
+      "Đến năm 2018, Việt Nam có quan hệ ngoại giao với 188 trong số 193 quốc gia thành viên Liên hợp quốc.",
     ],
   },
   {
     id: "politicsParty",
-    title: "Chính trị, xây dựng Đảng và Nhà nước",
+    title: "Chính trị, Đảng và Nhà nước",
     icon: "Landmark" as const,
     paragraphs: [
-      "Nhận thức về dân chủ xã hội chủ nghĩa, xây dựng Nhà nước pháp quyền ngày càng sâu sắc, cơ chế 'Đảng lãnh đạo, Nhà nước quản lý, nhân dân làm chủ' được xác định rõ hơn.",
-      "Công tác xây dựng, chỉnh đốn Đảng được coi là nhiệm vụ then chốt, nền tảng tư tưởng của Đảng ngày càng được khẳng định rõ ràng, góp phần củng cố vai trò lãnh đạo của Đảng trong thời kỳ mới.",
+      "Nhà nước pháp quyền xã hội chủ nghĩa và hệ thống pháp luật từng bước được hoàn thiện.",
+      "Công tác xây dựng, chỉnh đốn Đảng và phòng, chống tham nhũng ngày càng được chú trọng.",
     ],
   },
 ];
+
+export const achievementsClosing =
+  "Những kết quả trên cho thấy công cuộc đổi mới đã tạo ra sự thay đổi toàn diện về kinh tế, xã hội và vị thế quốc tế của Việt Nam.";
 
 export const cultureContent = {
   mainParagraphs: [

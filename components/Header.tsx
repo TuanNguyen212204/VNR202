@@ -110,7 +110,7 @@ export function Header() {
             </button>
 
             {/* Desktop navigation */}
-            <nav className="hidden items-center gap-1 lg:flex">
+            <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.section;
                 return (
@@ -118,7 +118,7 @@ export function Header() {
                     key={link.section}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`relative rounded-lg px-4 py-2 text-sm font-semibold no-underline transition-all duration-300 ${
+                    className={`relative rounded-lg px-2.5 py-2 text-[13px] font-semibold no-underline transition-all duration-300 xl:px-3.5 xl:text-sm ${
                       isActive
                         ? "text-amber"
                         : "text-cream hover:text-amber"

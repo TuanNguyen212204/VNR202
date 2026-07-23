@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUp, Sparkles } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { conclusionContent } from "@/lib/presentation-content";
 import { getIllustration } from "@/data/illustrations";
 import { SectionTitle } from "@/components/ui/SectionTitle";
