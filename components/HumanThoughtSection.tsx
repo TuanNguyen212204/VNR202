@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  Globe2,
   Heart,
   Landmark,
   ShieldCheck,
@@ -11,6 +12,7 @@ import {
 import {
   achievementsClosing,
   humanThoughtCards,
+  internationalStanding,
 } from "@/lib/presentation-content";
 import { HighlightedText } from "@/lib/highlight-figures";
 import { getIllustration, humanIllustrationIds } from "@/data/illustrations";
@@ -105,13 +107,87 @@ export function HumanThoughtSection() {
                       </p>
                     ))}
                   </div>
+                  {card.source && (
+                    <p className="mt-4 border-t border-amber/15 pt-3 text-xs leading-relaxed text-cream/55 lg:text-sm">
+                      <span className="font-semibold text-amber/70">Nguồn: </span>
+                      {card.source}
+                    </p>
+                  )}
                 </div>
               </Container>
             );
           })}
         </div>
 
-        <MotionSection delay={0.15} className="mt-12">
+        <MotionSection delay={0.12} className="mt-12">
+          <div className="group relative overflow-hidden rounded-lg border border-amber/20 bg-glass-dark p-6 backdrop-blur-md lg:p-8">
+            <div className="pointer-events-none absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-amber/25" />
+            <div className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-amber/25" />
+
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber/40 bg-gradient-to-br from-amber/20 to-crimson/15">
+                <Globe2 className="h-6 w-6 text-amber" strokeWidth={1.5} />
+              </span>
+              <h3 className="font-heading text-2xl font-bold text-cream lg:text-3xl">
+                {internationalStanding.title}
+              </h3>
+            </div>
+
+            <p
+              className="mb-6 text-base leading-relaxed text-cream/85 lg:text-lg"
+              style={{ lineHeight: 1.8 }}
+            >
+              <HighlightedText text={internationalStanding.intro} />
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              {internationalStanding.points.map((point, i) => {
+                const PointCard = mounted ? motion.div : "div";
+                const pointProps = mounted
+                  ? {
+                      initial: { opacity: 0, y: 16 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 0.5, delay: 0.08 * i },
+                    }
+                  : {};
+
+                return (
+                  <PointCard
+                    key={point.id}
+                    {...pointProps}
+                    className="rounded-lg border border-amber/15 bg-amber/[0.04] p-4 lg:p-5"
+                  >
+                    <h4 className="mb-2 font-heading text-lg font-bold text-amber">
+                      {point.title}
+                    </h4>
+                    <p
+                      className="text-sm leading-relaxed text-cream/85 lg:text-base"
+                      style={{ lineHeight: 1.75 }}
+                    >
+                      <HighlightedText text={point.text} />
+                    </p>
+                    {point.source && (
+                      <p className="mt-3 text-[11px] leading-relaxed text-cream/50 lg:text-xs">
+                        <span className="font-semibold text-amber/60">Nguồn: </span>
+                        {point.source}
+                      </p>
+                    )}
+                  </PointCard>
+                );
+              })}
+            </div>
+
+            <p
+              className="mt-6 border-t border-amber/15 pt-5 text-base font-medium leading-relaxed text-cream/90 lg:text-lg"
+              style={{ lineHeight: 1.8 }}
+            >
+              <HighlightedText text={internationalStanding.closing} />
+            </p>
+          </div>
+        </MotionSection>
+
+        <MotionSection delay={0.2} className="mt-10">
           <blockquote className="relative mx-auto max-w-4xl border-l-4 border-amber/60 bg-gradient-to-r from-amber/10 to-transparent px-6 py-5 text-lg font-medium leading-relaxed text-cream/90 lg:text-xl">
             {achievementsClosing}
           </blockquote>

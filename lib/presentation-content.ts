@@ -33,10 +33,10 @@ export const timelineContent = {
       description: "Những kết quả nổi bật trên các lĩnh vực kinh tế, văn hóa - xã hội, quốc phòng - an ninh, đối ngoại và xây dựng Đảng.",
       href: "#thanh-tuu",
       subItems: [
-        "Kinh tế tăng trưởng, hội nhập quốc tế",
-        "Văn hóa - xã hội chuyển biến tích cực",
-        "Quốc phòng, an ninh, đối ngoại được giữ vững",
-        "Xây dựng Đảng, Nhà nước pháp quyền",
+        "Kinh tế, văn hóa - xã hội",
+        "Quốc phòng, an ninh, đối ngoại",
+        "Chính trị, Đảng và Nhà nước",
+        "Việt Nam sau hơn 30 năm đổi mới",
       ],
     },
     {
@@ -166,6 +166,8 @@ export const humanThoughtCards = [
       "Việt Nam từng bước thoát khỏi khủng hoảng, duy trì tăng trưởng và hình thành nền kinh tế thị trường định hướng xã hội chủ nghĩa.",
       "Năm 2018, GDP tăng 7,08%, thu nhập bình quân đầu người đạt hơn 2.500 USD.",
     ],
+    source:
+      "Tổng cục Thống kê, Thông cáo báo chí tình hình kinh tế – xã hội năm 2018 (GDP tăng 7,08%; GDP bình quân đầu người khoảng 2.587 USD).",
   },
   {
     id: "cultureSociety",
@@ -175,6 +177,8 @@ export const humanThoughtCards = [
       "Đời sống nhân dân, giáo dục, y tế và an sinh xã hội được cải thiện.",
       "Tỷ lệ nghèo giảm từ khoảng 58% năm 1993 xuống khoảng 6% năm 2018.",
     ],
+    source:
+      "Ngân hàng Thế giới (World Bank): tỷ lệ nghèo khoảng 58% đầu thập niên 1990; giảm còn khoảng 6–7% quanh năm 2018 (VHLSS/World Bank).",
   },
   {
     id: "defenseForeign",
@@ -184,6 +188,8 @@ export const humanThoughtCards = [
       "Độc lập, chủ quyền và ổn định chính trị được giữ vững.",
       "Đến năm 2018, Việt Nam có quan hệ ngoại giao với 188 trong số 193 quốc gia thành viên Liên hợp quốc.",
     ],
+    source:
+      "Bộ Ngoại giao Việt Nam (dẫn theo Thông tấn xã Việt Nam / Báo Tin tức, 2018): quan hệ ngoại giao với 188/193 nước thành viên Liên hợp quốc.",
   },
   {
     id: "politicsParty",
@@ -193,11 +199,41 @@ export const humanThoughtCards = [
       "Nhà nước pháp quyền xã hội chủ nghĩa và hệ thống pháp luật từng bước được hoàn thiện.",
       "Công tác xây dựng, chỉnh đốn Đảng và phòng, chống tham nhũng ngày càng được chú trọng.",
     ],
+    source:
+      "Giáo trình Lịch sử Đảng Cộng sản Việt Nam (Bộ GD&ĐT); Văn kiện Đại hội Đảng các khóa về xây dựng Đảng và Nhà nước pháp quyền.",
   },
 ];
 
 export const achievementsClosing =
   "Những kết quả trên cho thấy công cuộc đổi mới đã tạo ra sự thay đổi toàn diện về kinh tế, xã hội và vị thế quốc tế của Việt Nam.";
+
+export const internationalStanding = {
+  title: "Việt Nam sau hơn 30 năm đổi mới",
+  intro:
+    "Trong mắt cộng đồng quốc tế, Việt Nam đã chuyển từ quốc gia bị bao vây, cô lập thành đối tác tin cậy, chủ động hội nhập.",
+  points: [
+    {
+      id: "integration",
+      title: "Hội nhập sâu rộng",
+      text: "Việt Nam gia nhập ASEAN năm 1995, APEC năm 1998 và WTO năm 2007, mở rộng quan hệ với hầu hết các quốc gia trên thế giới.",
+      source: "Bộ Ngoại giao Việt Nam; hồ sơ hội nhập quốc tế (ASEAN 1995, APEC 1998, WTO 2007).",
+    },
+    {
+      id: "partner",
+      title: "Đối tác tin cậy",
+      text: "Việt Nam được đánh giá là điểm đến đầu tư hấp dẫn, môi trường chính trị ổn định và nền kinh tế tăng trưởng năng động.",
+      source: "Đánh giá chung của cộng đồng quốc tế và các tổ chức kinh tế (WB, các đối tác FDI).",
+    },
+    {
+      id: "role",
+      title: "Vai trò quốc tế",
+      text: "Việt Nam tham gia tích cực các diễn đàn khu vực và toàn cầu, đóng góp vào hòa bình, hợp tác và phát triển.",
+      source: "Bộ Ngoại giao Việt Nam; hoạt động đối ngoại đa phương tại ASEAN, Liên hợp quốc, APEC, ASEM.",
+    },
+  ],
+  closing:
+    "Sau hơn 30 năm đổi mới, vị thế và uy tín của Việt Nam trên trường quốc tế được nâng cao rõ rệt. Từ một nước nghèo, kém phát triển do hậu quả chiến tranh, lại bị bao vây và cô lập, nhờ cải cách và hội nhập, Việt Nam đã trở thành quốc gia đang phát triển năng động, có thu nhập trung bình và là đối tác tin cậy của cộng đồng quốc tế.",
+};
 
 export const cultureContent = {
   mainParagraphs: [
